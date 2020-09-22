@@ -46,8 +46,11 @@ re-downloaded in order to locate PACKAGE."
 ;; See [Windows Terminal Powerline Setup](https://docs.microsoft.com/en-us/windows/terminal/tutorials/powerline-setup#set-up-powerline-in-wsl-ubuntu)
 (require-package 'powerline)
 (powerline-default-theme)
-;; (require-package 'airline-themes)
-;; (load-theme 'airline-doom-molokai t)
+(require-package 'airline-themes)
+;; Must run `require`, or will get a `Symbol’s function definition is void` error
+;; See [issue](https://github.com/AnthonyDiGirolamo/airline-themes/issues/28)
+(require 'airline-themes)
+(load-theme 'airline-doom-molokai t)
 
 ;; Doom modeline is nice but can only be used in GUI
 ;; (require-package 'all-the-icons)  // not working in WSL terminal (only work in GUI)
