@@ -18,10 +18,6 @@
 ;; Define a variable to handle debug mode
 (defvar my-debug nil "Enable debug mode.")
 
-;; Variable stores the root path
-(defconst emacs-d (file-name-as-directory user-emacs-directory)
-  "Directory of emacs.d")
-
 ;; Measure load time
 (setq emacs-load-start-time (current-time))
 
