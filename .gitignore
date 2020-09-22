@@ -1,0 +1,8 @@
+auto-save-list/
+elpa/
+
+custom.el
+*~
+amx-items
+company-statistics-cache.el
+.session
