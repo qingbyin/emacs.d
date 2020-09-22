@@ -35,6 +35,8 @@
 ;; (require 'init-autoload)
 ;; Collection of helper functions
 ;; (require-init 'init-utils)
+;; 3rd party packages
+(require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 ;; Package
 (require 'init-elpa)
 (require 'init-spelling)
