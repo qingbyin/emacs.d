@@ -46,7 +46,7 @@ re-downloaded in order to locate PACKAGE."
 ;; See [Windows Terminal Powerline Setup](https://docs.microsoft.com/en-us/windows/terminal/tutorials/powerline-setup#set-up-powerline-in-wsl-ubuntu)
 (require-package 'powerline)
 (powerline-default-theme)
-(require 'airline-themes)
+(require-package 'airline-themes)
 (load-theme 'airline-doom-molokai t)
 
 ;; Doom modeline is nice but can only be used in GUI
@@ -75,9 +75,11 @@ re-downloaded in order to locate PACKAGE."
 
 ;; -----------------------
 ;; Markdown mode
-;; Install "pandoc" first: `sudo apt-get install pandoc`
 (require-package 'markdown-mode)
-
+;; Install "pandoc" first: `sudo apt-get install pandoc`
+(setq markdown-command "pandoc")
+;; github style for pandoc
+(setq markdown-css-paths `(,(expand-file-name "github-markdown.css" user-emacs-directory)))
 
 (provide 'init-elpa)
 ;; file ends here
