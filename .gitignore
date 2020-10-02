@@ -1,9 +1,13 @@
 auto-save-list/
 elpa/
 site-lisp/package/
+.git/
 
 custom.el
 *~
 amx-items
 company-statistics-cache.el
 .session
+recentf
+/url/cache/
+

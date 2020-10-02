@@ -25,6 +25,9 @@
 ;; if not, the code will append to the end of this init.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
+;; Disable beep when trying to move beyond the end of the file
+(setq ring-bell-function 'ignore)
+
 ;; -----------------------------------------------------------------------------
 ;; Load modules
 ;; -----------------------------------------------------------------------------

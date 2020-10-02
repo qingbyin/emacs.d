@@ -7,9 +7,13 @@
 ;; -----------------------------------------------------------------------------
 (setq package-archives
       '(
-        ("gnu" . "https://mirrors.nju.edu.cn/elpa/gnu/")
-        ("melpa" . "https://mirrors.nju.edu.cn/elpa/melpa/")
-        ("melpa-stable" . "https://mirrors.nju.edu.cn/elpa/melpa-stable/")
+        ; ("gnu" . "https://mirrors.nju.edu.cn/elpa/gnu/")
+        ; ("melpa" . "https://mirrors.nju.edu.cn/elpa/melpa/")
+        ; ("melpa-stable" . "https://mirrors.nju.edu.cn/elpa/melpa-stable/")
+
+        ("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
         ))
 
 ;; -----------------------------------------------------------------------------
@@ -17,15 +21,15 @@
 ;; -----------------------------------------------------------------------------
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
-If NO-REFRESH is non-nil, the available package lists will not be
-re-downloaded in order to locate PACKAGE."
+  If NO-REFRESH is non-nil, the available package lists will not be
+  re-downloaded in order to locate PACKAGE."
   (or (package-installed-p package min-version)
       (let* ((known (cdr (assoc package package-archive-contents)))
              (versions (mapcar #'package-desc-version known)))
         (if (cl-some (lambda (v) (version-list-<= min-version v)) versions)
-            (package-install package)
+          (package-install package)
           (if no-refresh
-              (error "No version of %s >= %S is available" package min-version)
+            (error "No version of %s >= %S is available" package min-version)
             (package-refresh-contents)
             (require-package package min-version t))))))
 
@@ -57,6 +61,12 @@ re-downloaded in order to locate PACKAGE."
 ;; See https://github.com/seagle0128/doom-modeline#faq
 ;; (require-package 'doom-modeline)
 ;; (doom-modeline-mode 1)
+
+;; Startup screen shows recently used files
+(require-package 'dashboard)
+(dashboard-setup-startup-hook)
+;; Show load time
+(setq dashboard-banner-logo-title (message " ★ Emacs initialized in %.2fs ★ " (float-time (time-subtract (current-time) emacs-load-start-time))))
 
 ;; --------------------
 ;; Vim mode
