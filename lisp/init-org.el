@@ -1,15 +1,36 @@
 ;; org configuration
 
 (require 'org)
-; (define-key global-map "\C-cl" 'org-store-link)
-; (define-key global-map "\C-ca" 'org-agenda)
-; (setq org-log-done t)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+; Add a close date for a completed task
+(setq org-log-done t)
 
 ;; -----------------------------------------------------------------------------
-;; Config todo list
+;; Set files for global org-todo list
+;; -----------------------------------------------------------------------------
+(setq org-agenda-files (list "~/nutstore/cloud/todo/inbox.org"
+                             "~/nutstore/cloud/todo/todo.org"
+                             "~/nutstore/cloud/todo/research-night.org"
+                             "~/nutstore/cloud/todo/reading-night.org"
+                             "~/nutstore/cloud/todo/hack-night.org"
+                             "~/nutstore/cloud/todo/game-night.org"
+                             ))
+;; -----------------------------------------------------------------------------
+;; Create task templates
+;; -----------------------------------------------------------------------------
+(setq org-capture-templates
+      '(
+        ("t" "Todo" entry (file "~/nutstore/cloud/todo/inbox.org")
+         "* TODO %^{Description}\n %?\n Created: %u\n")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")))
+
+;; -----------------------------------------------------------------------------
+;; Config org-todo list
 ;; -----------------------------------------------------------------------------
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "DOING(g)" "|" "DONE(d)"))))
+      (quote ((sequence "TODO(t!)" "DOING(g)" "|" "DONE(d)"))))
 
 ;; Automatically change to DONE when all children are done
 ;; Code from:https://christiantietze.de/posts/2021/02/emacs-org-todo-doing-done-checkbox-cycling/
