@@ -14,5 +14,4 @@
 ;; "interactive = true" lets completion in M-x work without loading function's real definition.
 ;; When it is called by M-x, it's time to load the real definition.
 
-(provide 'init-autoload)
-;;; init-autoload.el ends here
+(provide 'init-autoload) ;;; init-autoload.el ends here
