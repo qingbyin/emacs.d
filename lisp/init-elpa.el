@@ -85,6 +85,9 @@
 (require-package 'evil-textobj-syntax)
 ;; enable evil-mode
 (evil-mode 1)
+;; Config evil-mode
+; Fix checklist insertion issue at normal mode
+(setq evil-move-beyond-eol t)
 
 ;; -----------------------
 ;; Markdown mode

@@ -15,3 +15,4 @@
 ;; When it is called by M-x, it's time to load the real definition.
 
 (provide 'init-autoload) ;;; init-autoload.el ends here
+
