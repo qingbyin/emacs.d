@@ -43,3 +43,4 @@
 ;; Package
 (require 'init-elpa)
 (require 'init-spelling)
+(require 'init-org)
