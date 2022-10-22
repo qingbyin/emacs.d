@@ -17,20 +17,15 @@
 ;; -----------------------------------------------------------------------------
 ;; Set files for global org-todo list
 ;; -----------------------------------------------------------------------------
-(setq org-agenda-files (list "~/nutstore/cloud/todo/inbox.org"
-                             "~/nutstore/cloud/todo/todo.org"
-                             "~/nutstore/cloud/todo/research-night.org"
-                             "~/nutstore/cloud/todo/reading-night.org"
-                             "~/nutstore/cloud/todo/hack-night.org"
-                             "~/nutstore/cloud/todo/game-night.org"
-                             ))
+(setq org-agenda-files (list "~/nutstore/cloud/todo"))
+
 ;; -----------------------------------------------------------------------------
 ;; Create task templates
 ;; -----------------------------------------------------------------------------
 (setq org-capture-templates
       '(
         ("t" "Todo" entry (file "~/nutstore/cloud/todo/inbox.org")
-         "* TODO %^{Description}\n %?\n Created: %u\n")
+         "* TODO %^{Description}\n Created: %u\n %?\n ")
         ("j" "Journal" entry (file+datetree "~/org/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")))
 
