@@ -7,6 +7,14 @@
 (setq org-log-done t)
 
 ;; -----------------------------------------------------------------------------
+;; Config styles
+;; -----------------------------------------------------------------------------
+; Beutiful bullets
+(require-package 'org-bullets)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+;; -----------------------------------------------------------------------------
 ;; Set files for global org-todo list
 ;; -----------------------------------------------------------------------------
 (setq org-agenda-files (list "~/nutstore/cloud/todo/inbox.org"
