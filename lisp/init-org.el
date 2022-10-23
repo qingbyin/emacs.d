@@ -102,5 +102,16 @@
 ; org-protocol is used to create capture notes from other apps.
 (require 'org-protocol)
 
+; Auto commit when Emacs is idle for 1800s(0.5 hour)
+(run-with-idle-timer 1800 3600 'org-commit)
+(defun org-commit ()
+    "Call a shell script to commit all org files."
+    (org-save-all-org-buffers)
+    (let ((default-directory "~/nutstore/cloud/todo"))
+      (shell-command "git add -all .")
+      (shell-command "git commit -a -m 'Auto update'"))
+    )
+
+
 ; End
 (provide 'init-org) ;;; end
