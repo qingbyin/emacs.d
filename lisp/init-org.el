@@ -14,6 +14,9 @@
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+; org-indent mode, i.e. add a virtual indentaion based on the headline level.
+(setq org-startup-indented t)
+
 ;; -----------------------------------------------------------------------------
 ;; Set files for global org-todo list
 ;; -----------------------------------------------------------------------------
@@ -25,9 +28,15 @@
 (setq org-capture-templates
       '(
         ("t" "Todo" entry (file "~/nutstore/cloud/todo/inbox.org")
-         "* TODO %^{Description}\n Created: %u\n %?\n ")
+         "* TODO %^{Description}\n Created: %u\n %a\n%?\n ")
         ("j" "Journal" entry (file+datetree "~/org/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a")))
+         "* %?\nEntered on %U\n  %i\n  %a")
+        ; For web caputre
+        ("p" "Protocol" entry (file "~/nutstore/cloud/todo/inbox.org")
+        "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+        ("L" "Protocol Link" entry (file "~/nutstore/cloud/todo/inbox.org")
+        "* %? [[%:link][%:description]] \nCaptured On: %U")
+        ))
 
 ;; -----------------------------------------------------------------------------
 ;; Config org-todo list
@@ -87,5 +96,12 @@
                 (org-todo-if-needed "DOING"))))))))
 (add-hook 'org-checkbox-statistics-hook #'ct/org-summary-checkbox-cookie)
 
+;; -----------------------------------------------------------------------------
+;; Other features
+;; -----------------------------------------------------------------------------
+; org-protocol is used to create capture notes from other apps.
+(server-start)
+(require 'org-protocol)
 
+; End
 (provide 'init-org) ;;; end
