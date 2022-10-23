@@ -28,7 +28,7 @@
 (setq org-capture-templates
       '(
         ("t" "Todo" entry (file "~/nutstore/cloud/todo/inbox.org")
-         "* TODO %^{Description}\n Created: %u\n %a\n%?\n ")
+         "* TODO %^{Description}\n Created: %u\n %?\n ")
         ("j" "Journal" entry (file+datetree "~/org/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
         ; For web caputre
