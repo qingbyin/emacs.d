@@ -100,7 +100,6 @@
 ;; Other features
 ;; -----------------------------------------------------------------------------
 ; org-protocol is used to create capture notes from other apps.
-(server-start)
 (require 'org-protocol)
 
 ; End
