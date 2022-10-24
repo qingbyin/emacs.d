@@ -19,6 +19,9 @@
 (evil-define-key 'normal org-mode-map (kbd "T") 'org-insert-todo-subheading)
 (evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
 
+(evil-define-key '(normal visual) org-mode-map (kbd "<f5>") 'org-clock-in)
+(evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
+
 ;; -----------------------------------------------------------------------------
 ;; Config styles
 ;; -----------------------------------------------------------------------------
@@ -31,8 +34,12 @@
 (setq org-startup-indented t)
 
 ; Strike through headlines for DONE tasks
-(set-face-attribute 'org-done nil :strike-through t)
-(set-face-attribute 'org-headline-done nil :strike-through t)
+(set-face-attribute 'org-done nil :strike-through t :foreground "dark grey")
+; Set text face style following DONE keyword 
+(set-face-attribute 'org-headline-done nil :strike-through t :foreground "dark grey")
+
+; Set TODO keyword color face
+(set-face-attribute 'org-todo nil :foreground "PaleGreen")
 
 ;; -----------------------------------------------------------------------------
 ;; Set files for global org-todo list
