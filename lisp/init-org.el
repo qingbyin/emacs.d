@@ -7,9 +7,16 @@
 (setq org-log-done t)
 
 ; Evil mode
-(evil-define-key 'normal 'global (kbd "<leader>d")
+(evil-define-key 'normal org-mode-map (kbd "<leader>d")
                  (lambda () (interactive) (org-todo "DONE")))
-(global-set-key (kbd "M-<up>") (lambda () (interactive) (org-todo "DONE]")))
+(evil-define-key 'normal org-mode-map (kbd "<leader>r") 'org-refile)
+(evil-define-key 'normal org-mode-map (kbd "<leader>c")
+                 (lambda () (interactive) (org-capture nil "t")))
+(evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
+(evil-define-key 'normal org-mode-map (kbd "t") 'org-insert-todo-heading)
+(evil-define-key 'normal org-mode-map (kbd "T") 'org-insert-todo-subheading)
+(evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
+
 ;; -----------------------------------------------------------------------------
 ;; Config styles
 ;; -----------------------------------------------------------------------------
@@ -99,6 +106,11 @@
                          (org-todo-if-needed "DOING")))
                 (org-todo-if-needed "DOING"))))))))
 (add-hook 'org-checkbox-statistics-hook #'ct/org-summary-checkbox-cookie)
+
+;; -----------------------------------------------------------------------------
+; Config refile
+(setq org-refile-use-outline-path 'file)
+(setq org-refile-targets '((org-agenda-files :level . 1)))
 
 ;; -----------------------------------------------------------------------------
 ;; Other features

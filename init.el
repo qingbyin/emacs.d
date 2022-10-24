@@ -34,10 +34,15 @@
 ; Indentation uses whitespaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(global-display-line-numbers-mode 1)
+(setq display-line-numbers-type 'relative)
 
 ; Show whitespaces (not need for the org mode)
 ; (global-whitespace-mode 1)
 ; (setq whitespace-style (quote (space-mark tab-mark)))
+
+; Keybindgs
+(global-set-key (kbd "C-s") 'save-buffer)
 
 ;; -----------------------------------------------------------------------------
 ;; Load modules
