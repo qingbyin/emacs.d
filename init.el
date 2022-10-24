@@ -62,6 +62,11 @@
 ; Keybindgs
 (global-set-key (kbd "C-s") 'save-buffer)
 
+; Font settings
+(set-face-attribute 'default nil :family "FiraCode QiHei NF")
+; Note: font size pt = height/10
+(set-face-attribute 'default nil :height 120)
+
 ;; -----------------------------------------------------------------------------
 ;; Load modules
 ;; -----------------------------------------------------------------------------
