@@ -6,6 +6,10 @@
 ; Add a close date for a completed task
 (setq org-log-done t)
 
+; Evil mode
+(evil-define-key 'normal 'global (kbd "<leader>d")
+                 (lambda () (interactive) (org-todo "DONE")))
+(global-set-key (kbd "M-<up>") (lambda () (interactive) (org-todo "DONE]")))
 ;; -----------------------------------------------------------------------------
 ;; Config styles
 ;; -----------------------------------------------------------------------------

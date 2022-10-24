@@ -88,6 +88,8 @@
 ;; Config evil-mode
 ; Fix checklist insertion issue at normal mode
 (setq evil-move-beyond-eol t)
+; Set <leader> to <space>
+(evil-set-leader 'normal (kbd "SPC"))
 
 ;; -----------------------
 ;; Markdown mode
