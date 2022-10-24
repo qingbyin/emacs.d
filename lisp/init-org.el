@@ -28,6 +28,10 @@
 ; org-indent mode, i.e. add a virtual indentaion based on the headline level.
 (setq org-startup-indented t)
 
+; Strike through headlines for DONE tasks
+(set-face-attribute 'org-done nil :strike-through t)
+(set-face-attribute 'org-headline-done nil :strike-through t)
+
 ;; -----------------------------------------------------------------------------
 ;; Set files for global org-todo list
 ;; -----------------------------------------------------------------------------
