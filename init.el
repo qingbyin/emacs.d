@@ -29,6 +29,17 @@
 (setq ring-bell-function 'ignore)
 
 ;; -----------------------------------------------------------------------------
+;; Basic config
+;; -----------------------------------------------------------------------------
+; Indentation uses whitespaces instead of tabs
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+; Show whitespaces (not need for the org mode)
+; (global-whitespace-mode 1)
+; (setq whitespace-style (quote (space-mark tab-mark)))
+
+;; -----------------------------------------------------------------------------
 ;; Load modules
 ;; -----------------------------------------------------------------------------
 ;; Load path ./lisp/ in order to know all files in it.
