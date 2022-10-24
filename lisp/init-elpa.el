@@ -99,5 +99,11 @@
 ;; github style for pandoc
 (setq markdown-css-paths `(,(expand-file-name "github-markdown.css" user-emacs-directory)))
 
+;; -----------------------
+;; git gutter
+(require-package 'diff-hl)
+(global-diff-hl-mode)
+(diff-hl-margin-mode)
+
 (provide 'init-elpa)
 ;; file ends here

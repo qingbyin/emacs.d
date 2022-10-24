@@ -7,7 +7,7 @@
 (setq org-log-done t)
 
 ; Evil mode
-(evil-define-key 'normal org-mode-map (kbd "<leader>d")
+(evil-define-key 'normal org-mode-map (kbd "D")
                  (lambda () (interactive) (org-todo "DONE")))
 (evil-define-key 'normal org-mode-map (kbd "<leader>r") 'org-refile)
 (evil-define-key 'normal org-mode-map (kbd "<leader>c")
