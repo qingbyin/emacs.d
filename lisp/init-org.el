@@ -9,6 +9,8 @@
 ; Evil mode
 (evil-define-key 'normal org-mode-map (kbd "D")
                  (lambda () (interactive) (org-todo "DONE")))
+(evil-define-key 'normal org-mode-map (kbd "C")
+                 (lambda () (interactive) (org-todo "CANCELLED")))
 (evil-define-key 'normal org-mode-map (kbd "<leader>r") 'org-refile)
 (evil-define-key 'normal org-mode-map (kbd "<leader>c")
                  (lambda () (interactive) (org-capture nil "t")))
@@ -57,7 +59,7 @@
 ;; Config org-todo list
 ;; -----------------------------------------------------------------------------
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t!)" "DOING(g)" "|" "DONE(d)"))))
+      (quote ((sequence "TODO(t!)" "DOING(g)" "|" "CANCELLED(c)" "DONE(d)"))))
 
 ;; Automatically change to DONE when all children are done
 ;; Code from:https://christiantietze.de/posts/2021/02/emacs-org-todo-doing-done-checkbox-cycling/
