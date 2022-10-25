@@ -105,5 +105,23 @@
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
 
+
+;; -----------------------
+;; Helm  = vim coc-lists for interactive searching
+(require-package 'helm)
+(require-package 'helm-ag)
+(helm-mode 1)
+(setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
+(setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+; Set keybindings
+(evil-define-key 'normal 'global (kbd "C-p") 'helm-find-files)
+(evil-define-key 'normal 'global (kbd "<leader>p") 'helm-buffers-list)
+(evil-define-key 'normal 'global (kbd "<leader>h") 'helm-apropos)
+(evil-define-key 'normal 'global (kbd "<leader>f") 'helm-do-ag-this-file)
+(evil-define-key 'normal 'global (kbd "<leader>F") 'helm-do-grep-ag)
+; rebind tab to run persistent action
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+
+
 (provide 'init-elpa)
 ;; file ends here
