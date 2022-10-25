@@ -11,7 +11,7 @@
                  (lambda () (interactive) (org-todo "DONE")))
 (evil-define-key 'normal org-mode-map (kbd "C")
                  (lambda () (interactive) (org-todo "CANCELLED")))
-(evil-define-key 'normal org-mode-map (kbd "<leader>r") 'org-refile)
+(evil-define-key '(normal visual) org-mode-map (kbd "R") 'org-refile)
 (evil-define-key 'normal org-mode-map (kbd "<leader>c")
                  (lambda () (interactive) (org-capture nil "t")))
 (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
