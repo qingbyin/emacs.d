@@ -41,6 +41,9 @@
 ; Set TODO keyword color face
 (set-face-attribute 'org-todo nil :foreground "PaleGreen")
 
+; Collpase all when opening org files
+(setq org-startup-folded t)
+
 ;; -----------------------------------------------------------------------------
 ;; Set files for global org-todo list
 ;; -----------------------------------------------------------------------------
