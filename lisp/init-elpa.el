@@ -119,8 +119,7 @@
 (evil-define-key 'normal 'global (kbd "<leader>h") 'helm-apropos)
 (evil-define-key 'normal 'global (kbd "<leader>f") 'helm-do-ag-this-file)
 (evil-define-key 'normal 'global (kbd "<leader>F") 'helm-do-grep-ag)
-; rebind tab to run persistent action
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+(evil-define-key 'normal 'global (kbd "<leader>x") 'helm-M-x)
 
 
 (provide 'init-elpa)
