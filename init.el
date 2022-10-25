@@ -35,7 +35,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (global-display-line-numbers-mode 1)
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 ; Show whitespaces (not need for the org mode)
 ; (global-whitespace-mode 1)
