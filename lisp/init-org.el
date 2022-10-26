@@ -125,8 +125,12 @@
 
 ;; -----------------------------------------------------------------------------
 ; Config refile
-(setq org-refile-use-outline-path 'file)
+; Refile destination: any of my org agenda files
 (setq org-refile-targets '((org-agenda-files :level . 1)))
+; Set the refile target list contains both the file name and headlings
+(setq org-refile-use-outline-path 'file)
+; Fix a helm-org-refile issue: can not see the headings of the target file
+(setq org-outline-path-complete-in-steps nil)
 
 ;; -----------------------------------------------------------------------------
 ;; Other features
