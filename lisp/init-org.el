@@ -38,13 +38,20 @@
 ; org-indent mode, i.e. add a virtual indentaion based on the headline level.
 (setq org-startup-indented t)
 
+; Set fac color for the TODO keyword and its statistic (i.e. [/])
+(set-face-attribute 'org-todo nil :foreground "PaleGreen")
 ; Strike through headlines for DONE tasks
 (set-face-attribute 'org-done nil :strike-through t :foreground "dark grey")
 ; Set text face style following DONE keyword 
 (set-face-attribute 'org-headline-done nil :strike-through t :foreground "dark grey")
 
-; Set TODO keyword color face
-(set-face-attribute 'org-todo nil :foreground "PaleGreen")
+; Set other keywords color face
+(setq org-todo-keyword-faces
+      (quote (
+              ("NEXT" :foreground "#b54845" :weight bold)
+              ("WAIT" :foreground "#f9750a" :weight bold)
+              ("STOP" :foreground "dark grey" :weight bold)
+              )))
 
 ; Collpase all when opening org files
 (setq org-startup-folded t)
