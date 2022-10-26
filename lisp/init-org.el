@@ -2,11 +2,13 @@
 
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
 ; Add a close date for a completed task
 (setq org-log-done t)
 
 ; Evil mode
+(evil-define-key 'normal org-mode-map (kbd "<leader>a")
+                 (lambda () (interactive) (org-agenda nil "x")))
+
 (evil-define-key 'normal org-mode-map (kbd "T")
                  (lambda () (interactive) (org-todo "TODO")))
 (evil-define-key 'normal org-mode-map (kbd "N")
@@ -171,6 +173,39 @@
 (setq org-outline-path-complete-in-steps nil)
 ; Allow to create new headding names onto the end of the refile target.
 (setq org-refile-allow-creating-parent-nodes 'confirm)
+
+;; -----------------------------------------------------------------------------
+;; Config agenda views
+;; Combine multiple searches together into a single agenda
+(setq org-agenda-custom-commands
+      '(("x" "Block agenda"
+         (
+          ; limits the agenda display to a single day
+          (agenda "" ((org-agenda-span 1)))
+          (tags "inbox"
+                ((org-agenda-overriding-header "Unorganized tasks")
+                 ; Not show subtasks
+                 (org-tags-match-list-sublevels nil))
+                ; Show late first
+                 (org-agenda-sorting-strategy '(time-down category-keep))
+                )
+          (todo "NEXT" ; NEXT tasks in all agenda files
+                ((org-agenda-overriding-header "Now tasks")
+                 ; Show subtasks with indentation
+                 (org-tags-match-list-sublevels 'indented)
+                 (org-agenda-sorting-strategy '(priority-down category-keep))
+                 ))
+          (tags-todo "todo" ; TODO Tasks in the todo.org
+                ((org-agenda-overriding-header "Today tasks")
+                 ; Not show subtasks
+                 (org-tags-match-list-sublevels nil)
+                 ; Show high priority, low effort first
+                 (org-agenda-sorting-strategy '(priority-down effort-up))
+                 ))
+          )
+         ((org-agenda-compact-blocks t))) ;; options set here apply to the entire block
+        ;; ...other commands here
+        ))
 
 ;; -----------------------------------------------------------------------------
 ;; Other features
