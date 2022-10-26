@@ -131,6 +131,8 @@
 (setq org-refile-use-outline-path 'file)
 ; Fix a helm-org-refile issue: can not see the headings of the target file
 (setq org-outline-path-complete-in-steps nil)
+; Allow to create new headding names onto the end of the refile target.
+(setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;; -----------------------------------------------------------------------------
 ;; Other features
