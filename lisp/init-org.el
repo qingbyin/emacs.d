@@ -25,6 +25,8 @@
 (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
 (evil-define-key 'normal org-mode-map (kbd "t") 'org-insert-todo-heading)
 (evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
+(evil-define-key 'normal org-mode-map (kbd "<lead>d") 'org-deadline)
+(evil-define-key 'normal org-mode-map (kbd "<lead>s") 'org-schedule)
 
 (evil-define-key '(normal visual) org-mode-map (kbd "<f5>") 'org-clock-in)
 (evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
@@ -51,9 +53,7 @@
 (setq org-todo-keyword-faces
       (quote (
               ("NEXT" :foreground "#b54845" :weight bold)
-              ("WAIT" :foreground "#f9750a" :weight bold)
-              ("STOP" :foreground "dark grey" :weight bold)
-              )))
+              ("WAIT" :foreground "#f9750a" :weight bold))))
 
 ; Collpase all when opening org files
 (setq org-startup-folded t)
@@ -93,7 +93,7 @@
      "WAIT(w)" ; waiting for some external change (event)
      "HOLD(h)" ; waiting for some internal change (of mind)
      "|"
-     "STOP(s@/!)" ; stopped waiting, decided not to work on it
+     "STOP(s)" ; stopped waiting, decided not to work on it
      )))
 
 ; Auto change from NEXT to TODO if the task are now a project and not a task.
