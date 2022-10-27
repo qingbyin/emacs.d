@@ -30,8 +30,15 @@
 (evil-define-key 'normal org-mode-map (kbd "<leader>s") 'org-schedule)
 (evil-define-key 'normal org-mode-map (kbd "<leader>e") 'org-set-effort)
 
+(evil-define-key 'normal org-mode-map (kbd "<") 'org-metaleft)
+(evil-define-key 'normal org-mode-map (kbd ">") 'org-metaright)
+
+(evil-define-key 'normal org-mode-map (kbd "<f1>") 'org-narrow-to-subtree)
+(evil-define-key 'normal org-mode-map (kbd "<f2>") 'widen)
 (evil-define-key '(normal visual) org-mode-map (kbd "<f5>") 'org-clock-in)
 (evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
+
+(setq org-use-speed-commands t)
 
 ;; -----------------------------------------------------------------------------
 ;; Config styles

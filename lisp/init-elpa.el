@@ -91,6 +91,9 @@
 ; Set <leader> to <space>
 (evil-set-leader 'normal (kbd "SPC"))
 
+; Key bindings
+(evil-define-key 'normal 'global (kbd "<leader>q") 'kill-current-buffer)
+
 ;; -----------------------
 ;; Markdown mode
 (require-package 'markdown-mode)
@@ -104,6 +107,14 @@
 (require-package 'diff-hl)
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
+
+;; -----------------------
+;; fcitx
+(require-package 'fcitx)
+(require 'fcitx)
+(setq fcitx-use-dbus nil
+  fcitx-remote-command "fcitx5-remote")
+(fcitx-aggressive-setup)
 
 
 ;; -----------------------
