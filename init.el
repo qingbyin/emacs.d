@@ -37,6 +37,8 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'visual)
 
+(setq help-window-select t)
+
 ; Show whitespaces (not need for the org mode)
 ; (global-whitespace-mode 1)
 ; (setq whitespace-style (quote (space-mark tab-mark)))
