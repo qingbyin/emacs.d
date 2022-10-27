@@ -94,6 +94,11 @@
 ; Key bindings
 (evil-define-key 'normal 'global (kbd "<leader>q") 'kill-current-buffer)
 
+(evil-define-key 'normal 'global (kbd "C-j") 'evil-window-down)
+(evil-define-key 'normal 'global (kbd "C-k") 'evil-window-up)
+(evil-define-key 'normal 'global (kbd "C-h") 'evil-window-left)
+(evil-define-key 'normal 'global (kbd "C-l") 'evil-window-right)
+
 ;; -----------------------
 ;; Markdown mode
 (require-package 'markdown-mode)
