@@ -27,6 +27,7 @@
 (evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
 (evil-define-key 'normal org-mode-map (kbd "<lead>d") 'org-deadline)
 (evil-define-key 'normal org-mode-map (kbd "<lead>s") 'org-schedule)
+(evil-define-key 'normal org-mode-map (kbd "<lead>s") 'org-set-effort)
 
 (evil-define-key '(normal visual) org-mode-map (kbd "<f5>") 'org-clock-in)
 (evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
@@ -119,6 +120,10 @@
     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 
 (add-hook 'org-after-todo-statistics-hook #'org-summary-todo)
+
+; Hide org state changes in drawer
+(setq org-log-into-drawer "LOGBOOK")
+
 ;; -----------------------------------------------------------------------------
 ; Config refile
 ; Refile destination: any of my org agenda files
