@@ -84,8 +84,8 @@
       '(
         ("t" "Todo" entry (file "~/nutstore/cloud/todo/inbox.org")
          "* TODO %^{Description}\nCreated: %u\n %?\n ")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a")
+        ("j" "Journal" entry (file "~/nutstore/cloud/todo/journal.org")
+         "* %u\n%?\n")
         ; For web caputre
         ("p" "Protocol" entry (file "~/nutstore/cloud/todo/inbox.org")
         "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
@@ -169,7 +169,7 @@
                  (org-tags-match-list-sublevels 'indented)
                  (org-agenda-sorting-strategy '(priority-down category-keep))
                  ))
-          (tags-todo "todo" ; TODO Tasks in the todo.org
+          (tags-todo "+todo-daily" ; TODO Tasks in the todo.org exclude daily tasks
                 ((org-agenda-overriding-header "Today tasks")
                  ; Not show subtasks
                  (org-tags-match-list-sublevels nil)
