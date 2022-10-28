@@ -2,9 +2,14 @@
 
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
+; Use evil mode in agenda view by default
+(evil-set-initial-state 'org-agenda-mode 'motion)
 ; Add a close date for a completed task
 (setq org-log-done t)
 
+; auto list
+(require-package 'org-autolist)
+(add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
 ; Evil mode
 (evil-define-key 'normal org-mode-map (kbd "<leader>a")
                  (lambda () (interactive) (org-agenda nil "x")))
@@ -78,7 +83,7 @@
 (setq org-capture-templates
       '(
         ("t" "Todo" entry (file "~/nutstore/cloud/todo/inbox.org")
-         "* TODO %^{Description}\n Created: %u\n %?\n ")
+         "* TODO %^{Description}\nCreated: %u\n %?\n ")
         ("j" "Journal" entry (file+datetree "~/org/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
         ; For web caputre

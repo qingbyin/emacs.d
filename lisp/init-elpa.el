@@ -109,9 +109,11 @@
 
 ;; -----------------------
 ;; git gutter
-(require-package 'diff-hl)
-(global-diff-hl-mode)
-(diff-hl-margin-mode)
+(require-package 'git-gutter)
+(global-git-gutter-mode +1)
+(evil-define-key 'normal 'global (kbd "gj") 'git-gutter:next-hunk)
+(evil-define-key 'normal 'global (kbd "gk") 'git-gutter:previous-hunk)
+(evil-define-key 'normal 'global (kbd "<leader>gd") 'git-gutter:popup-hunk)
 
 ;; -----------------------
 ;; fcitx
@@ -121,6 +123,10 @@
   fcitx-remote-command "fcitx5-remote")
 (fcitx-aggressive-setup)
 
+;; -------
+; Show planned effort time and real used time (clock) in the cookie 
+(require-package 'org-custom-cookies)
+(evil-define-key 'normal 'global (kbd "<leader>u") 'org-custom-cookies-update-current-heading)
 
 ;; -----------------------
 ;; Helm  = vim coc-lists for interactive searching
