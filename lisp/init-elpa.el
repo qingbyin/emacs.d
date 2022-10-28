@@ -94,10 +94,10 @@
 ; Key bindings
 (evil-define-key 'normal 'global (kbd "<leader>q") 'kill-current-buffer)
 
-(evil-define-key 'normal 'global (kbd "C-j") 'evil-window-down)
-(evil-define-key 'normal 'global (kbd "C-k") 'evil-window-up)
-(evil-define-key 'normal 'global (kbd "C-h") 'evil-window-left)
-(evil-define-key 'normal 'global (kbd "C-l") 'evil-window-right)
+(evil-define-key '(normal motion) 'global (kbd "C-j") 'evil-window-down)
+(evil-define-key '(normal motion) 'global (kbd "C-k") 'evil-window-up)
+(evil-define-key '(normal motion) 'global (kbd "C-h") 'evil-window-left)
+(evil-define-key '(normal motion) 'global (kbd "C-l") 'evil-window-right)
 
 ;; -----------------------
 ;; Markdown mode
@@ -126,7 +126,7 @@
 ;; -------
 ; Show planned effort time and real used time (clock) in the cookie 
 (require-package 'org-custom-cookies)
-(evil-define-key 'normal 'global (kbd "<leader>u") 'org-custom-cookies-update-current-heading)
+(evil-define-key 'normal 'global (kbd "<leader>u") 'org-custom-cookies-update-all)
 
 ;; -----------------------
 ;; Helm  = vim coc-lists for interactive searching
