@@ -169,7 +169,7 @@
                  (org-tags-match-list-sublevels 'indented)
                  (org-agenda-sorting-strategy '(priority-down category-keep))
                  ))
-          (tags-todo "+todo-daily" ; TODO Tasks in the todo.org exclude daily tasks
+          (tags-todo "todo-daily/TODO" ; TODO Tasks in the todo.org exclude daily and NEXT tasks
                 ((org-agenda-overriding-header "Today tasks")
                  ; Not show subtasks
                  (org-tags-match-list-sublevels nil)
