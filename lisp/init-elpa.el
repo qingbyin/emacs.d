@@ -114,6 +114,7 @@
 (evil-define-key 'normal 'global (kbd "gj") 'git-gutter:next-hunk)
 (evil-define-key 'normal 'global (kbd "gk") 'git-gutter:previous-hunk)
 (evil-define-key 'normal 'global (kbd "<leader>gd") 'git-gutter:popup-hunk)
+(evil-define-key 'normal 'global (kbd "gs") 'git-gutter:stage-hunk)
 
 ;; -----------------------
 ;; fcitx

@@ -8,8 +8,8 @@
 (setq org-log-done t)
 
 ; auto list
-(require-package 'org-autolist)
-(add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
+; (require-package 'org-autolist)
+; (add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
 ; Evil mode
 (evil-define-key 'normal org-mode-map (kbd "<leader>a")
                  (lambda () (interactive) (org-agenda nil "x")))
@@ -28,7 +28,7 @@
 (evil-define-key '(normal visual) org-mode-map (kbd "<leader>R") 'org-archive-subtree)
 (evil-define-key 'normal org-mode-map (kbd "<leader>c")
                  (lambda () (interactive) (org-capture nil "t")))
-(evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
+; (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
 (evil-define-key 'normal org-mode-map (kbd "t") 'org-insert-todo-heading)
 (evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
 (evil-define-key 'normal org-mode-map (kbd "<leader>d") 'org-deadline)
@@ -83,14 +83,14 @@
 (setq org-capture-templates
       '(
         ("t" "Todo" entry (file "~/nutstore/cloud/todo/inbox.org")
-         "* TODO %^{Description}\nCreated: %u\n %?\n ")
+         "* TODO %^{Description}\nCreated: %u\n%?\n")
         ("j" "Journal" entry (file "~/nutstore/cloud/todo/journal.org")
          "* %u\n%?\n")
         ; For web caputre
         ("p" "Protocol" entry (file "~/nutstore/cloud/todo/inbox.org")
-        "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+        "* TODO %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
         ("L" "Protocol Link" entry (file "~/nutstore/cloud/todo/inbox.org")
-        "* %? [[%:link][%:description]] \nCaptured On: %U")
+        "* TODO %? [[%:link][%:description]] \nCaptured On: %U")
         ))
 
 ;; -----------------------------------------------------------------------------
@@ -169,6 +169,8 @@
                  (org-tags-match-list-sublevels 'indented)
                  (org-agenda-sorting-strategy '(priority-down category-keep))
                  ))
+          ; See the match syntax in
+          ; https: //orgmode.org/manual/Matching-tags-and-properties.html
           (tags-todo "todo-daily/TODO" ; TODO Tasks in the todo.org exclude daily and NEXT tasks
                 ((org-agenda-overriding-header "Today tasks")
                  ; Not show subtasks
@@ -198,6 +200,27 @@
       (shell-command "git commit -a -m 'Auto update'"))
     )
 
+;; 让中文也可以不加空格就使用行内格式(setcar (nthcdr 0
+(setcar (nthcdr 0 org-emphasis-regexp-components) " \t('\"{[:nonascii:]")
+(setcar (nthcdr 1 org-emphasis-regexp-components) "- \t.,:!?;'\")}\\[[:nonascii:]")
+(org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
+(org-element-update-syntax)
+;; 规定上下标必须加{}，否则中文使用下划线时它会以为是两个连着的下标
+(setq org-use-sub-superscripts "{}")
+
+;; org preview
+(require-package 'grip-mode)
+(evil-define-key 'normal org-mode-map (kbd "<leader>v") #'grip-mode)
+(setq grip-preview-use-webkit t)
+
+; Set 强调字体style
+(setq org-emphasis-alist
+      '(("*" (bold :foreground "#b54845" ))
+        ("/" italic)
+        ("_" underline)
+        ("=" (:background "maroon" :foreground "white"))
+        ("~" (:background "#343941"))
+        ("+" (:strike-through t))))
 
 ; End
 (provide 'init-org) ;;; end
