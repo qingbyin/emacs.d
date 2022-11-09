@@ -220,8 +220,8 @@
 ; Auto show/hide emphasis markers, links
 (require-package 'org-appear)
 (setq org-hide-emphasis-markers t)
-(setq org-appear-autolinks t)
-(setq org-link-descriptive t)
+; (setq org-appear-autolinks t)
+; (setq org-link-descriptive t)
 ; Toogle or-appear in evil insert mode only
 (add-hook 'org-mode-hook 'org-appear-mode)
 
