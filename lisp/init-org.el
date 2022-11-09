@@ -208,11 +208,6 @@
 ;; 规定上下标必须加{}，否则中文使用下划线时它会以为是两个连着的下标
 (setq org-use-sub-superscripts "{}")
 
-;; org preview
-(require-package 'grip-mode)
-(evil-define-key 'normal org-mode-map (kbd "<leader>v") #'grip-mode)
-(setq grip-preview-use-webkit t)
-
 ; Set 强调字体style
 (setq org-emphasis-alist
       '(("*" (bold :foreground "#b54845" ))
