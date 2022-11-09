@@ -222,5 +222,13 @@
         ("~" (:background "#343941"))
         ("+" (:strike-through t))))
 
+; Auto show/hide emphasis markers, links
+(require-package 'org-appear)
+(setq org-hide-emphasis-markers t)
+(setq org-appear-autolinks t)
+(setq org-link-descriptive t)
+; Toogle or-appear in evil insert mode only
+(add-hook 'org-mode-hook 'org-appear-mode)
+
 ; End
 (provide 'init-org) ;;; end
