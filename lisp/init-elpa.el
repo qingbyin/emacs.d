@@ -148,6 +148,7 @@
 (evil-define-key 'normal 'global (kbd "<leader>f") 'helm-do-ag-this-file)
 (evil-define-key 'normal 'global (kbd "<leader>F") 'helm-do-grep-ag)
 (evil-define-key 'normal 'global (kbd "<leader>x") 'helm-M-x)
+(evil-define-key 'normal 'global (kbd "<leader>e") 'dired)
 
 
 (provide 'init-elpa)

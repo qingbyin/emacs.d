@@ -37,7 +37,7 @@
 (evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
 (evil-define-key 'normal org-mode-map (kbd "<leader>d") 'org-deadline)
 (evil-define-key 'normal org-mode-map (kbd "<leader>s") 'org-schedule)
-(evil-define-key 'normal org-mode-map (kbd "<leader>e") 'org-set-effort)
+(evil-define-key 'normal org-mode-map (kbd "E") 'org-set-effort)
 
 (evil-define-key 'normal org-mode-map (kbd "<") 'org-metaleft)
 (evil-define-key 'normal org-mode-map (kbd ">") 'org-metaright)
