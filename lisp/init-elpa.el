@@ -11,9 +11,14 @@
         ; ("melpa" . "https://mirrors.nju.edu.cn/elpa/melpa/")
         ; ("melpa-stable" . "https://mirrors.nju.edu.cn/elpa/melpa-stable/")
 
-        ("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-        ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-        ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+        ; ("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ; ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        ; ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+        ; USTC
+        ("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
+        ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")
+        ("melpa-stable" . "https://mirrors.ustc.edu.cn/elpa/stable-melpa/")
+        ("nongnu" . "http://mirrors.ustc.edu.cn/elpa/nongnu/")
         ))
 
 ;; -----------------------------------------------------------------------------

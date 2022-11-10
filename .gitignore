@@ -10,4 +10,8 @@ company-statistics-cache.el
 .session
 recentf
 /url/cache/
+/request/
 bookmarks
+*.db
+*.org-id-locations
+tramp

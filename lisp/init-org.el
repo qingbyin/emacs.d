@@ -13,19 +13,23 @@
 ; Evil mode
 (evil-define-key 'normal org-mode-map (kbd "<leader>a")
                  (lambda () (interactive) (org-agenda nil "x")))
-
+(evil-define-key 'motion org-agenda-mode-map (kbd "a")
+                 (lambda () (interactive) (org-agenda nil "x")))
 (evil-define-key 'normal org-mode-map (kbd "T")
                  (lambda () (interactive) (org-todo "TODO")))
 (evil-define-key 'normal org-mode-map (kbd "N")
                  (lambda () (interactive) (org-todo "NEXT")))
 (evil-define-key 'normal org-mode-map (kbd "D")
                  (lambda () (interactive) (org-todo "DONE")))
+(evil-define-key 'motion org-agenda-mode-map (kbd "D")
+                 (lambda () (interactive) (org-agenda-todo "DONE")))
 (evil-define-key 'normal org-mode-map (kbd "W")
                  (lambda () (interactive) (org-todo "WAIT")))
 (evil-define-key 'normal org-mode-map (kbd "S")
                  (lambda () (interactive) (org-todo "STOP")))
 (evil-define-key '(normal visual) org-mode-map (kbd "<leader>r") 'org-refile)
-(evil-define-key '(normal visual) org-mode-map (kbd "<leader>R") 'org-archive-subtree)
+(evil-define-key '(normal visual) org-mode-map (kbd "<leader>R") 'org-archive-subtree-default-with-confirmation)
+(evil-define-key '(normal visual) org-mode-map (kbd "R") 'org-archive-subtree-default-with-confirmation)
 (evil-define-key 'normal org-mode-map (kbd "<leader>c")
                  (lambda () (interactive) (org-capture nil "t")))
 ; (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
@@ -224,6 +228,22 @@
 ; (setq org-link-descriptive t)
 ; Toogle or-appear in evil insert mode only
 (add-hook 'org-mode-hook 'org-appear-mode)
+
+; org-roam
+(require-package 'org-roam)
+(require 'org-roam)
+(setq org-roam-directory (file-truename "~/nutstore/cloud/todo/"))
+(org-roam-db-autosync-mode)
+; Complete roam node even if not within a bracketed link(i.e. [[]])
+(setq org-roam-completion-everywhere t)
+
+; Anki with org
+(require-package 'anki-editor)
+(add-hook 'org-mode-hook 'anki-editor-mode)
+; Do not count org tags as ANki tags
+(setq anki-editor-org-tags-as-anki-tags nil)
+(evil-define-key '(normal insert) org-mode-map (kbd "C-a") 'anki-editor-insert-note)
+(evil-define-key 'visual org-mode-map (kbd "C-C") 'anki-editor-cloze-region)
 
 ; End
 (provide 'init-org) ;;; end
