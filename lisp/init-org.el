@@ -66,6 +66,7 @@
 (set-face-attribute 'org-done nil :strike-through t :foreground "dark grey")
 ; Set text face style following DONE keyword 
 (set-face-attribute 'org-headline-done nil :strike-through t :foreground "dark grey")
+(set-face-attribute 'org-link nil :inherit 'normal :underline nil :foreground "#089696")
 
 ; Set other keywords color face
 (setq org-todo-keyword-faces
@@ -92,7 +93,7 @@
          "* %u\n%?\n")
         ; For web caputre
         ("p" "Protocol" entry (file "~/nutstore/cloud/todo/inbox.org")
-        "* TODO %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+        "* TODO%^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
         ("L" "Protocol Link" entry (file "~/nutstore/cloud/todo/inbox.org")
         "* TODO %? [[%:link][%:description]] \nCaptured On: %U")
         ))
@@ -232,10 +233,32 @@
 ; org-roam
 (require-package 'org-roam)
 (require 'org-roam)
-(setq org-roam-directory (file-truename "~/nutstore/cloud/todo/"))
+(setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
 (org-roam-db-autosync-mode)
+; Auto add org-id to make a link to the current entry 
+(setq org-id-link-to-org-use-id t)
+; (add-hook 'org-capture-mode-hook #'org-id-get-create) ; Auto create id for each capture
 ; Complete roam node even if not within a bracketed link(i.e. [[]])
+(setq org-roam-completion-system 'helm)
 (setq org-roam-completion-everywhere t)
+
+; (add-to-list 'display-buffer-alist
+;            '(("\\*org-roam\\*"
+;               (display-buffer-in-direction)
+;               (direction . right)
+;               (window-width . 0.33)
+;               (window-height . fit-window-to-buffer))))
+
+; Default templates
+(setq org-roam-capture-templates
+      '(("d" "default" plain "%?"
+         :immediate-finish t
+         :target (file+head "notes/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+         :unnarrowed t)))
+
+(define-key input-decode-map "\C-i" [C-i]) ; Distinguish C-i from TAB
+(global-set-key (kbd "<C-i>") 'org-roam-node-insert)
+(global-set-key (kbd "<C-f>") 'org-roam-node-find)
 
 ; Anki with org
 (require-package 'anki-editor)
