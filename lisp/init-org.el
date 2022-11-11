@@ -52,6 +52,9 @@
 ;; -----------------------------------------------------------------------------
 ;; Config styles
 ;; -----------------------------------------------------------------------------
+; Extra line spacing
+(setq line-spacing 0.1)
+
 ; Beutiful bullets
 (require-package 'org-bullets)
 (require 'org-bullets)
@@ -114,6 +117,8 @@
      "|"
      "STOP(s)" ; stopped waiting, decided not to work on it
      )))
+; Cannot set a headline to DONE if children aren’t DONE
+(setq-default org-enforce-todo-dependencies t)
 
 ; Auto change from NEXT to TODO if the task are now a project and not a task.
 ; (i.e. make sure NEXT is for a task and not a project)
@@ -253,7 +258,8 @@
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?"
          :immediate-finish t
-         :target (file+head "notes/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+         :target (file+head "notes/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n#+date: %u\n- tags::")
          :unnarrowed t)))
 
 (define-key input-decode-map "\C-i" [C-i]) ; Distinguish C-i from TAB
