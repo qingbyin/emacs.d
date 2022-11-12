@@ -1,14 +1,15 @@
 ;; Helm  = vim coc-lists for interactive searching
 (use-package helm
-  :config
-  (helm-mode 1)
+  :diminish helm-mode
+  :hook (after-init . helm-mode)
   :bind (:map evil-normal-state-map
               ("C-p" . helm-find-files)
               ("<leader>p" . helm-buffers-list)
               ("<leader>h" . helm-apropos)
               ("<leader>x" . helm-M-x)
               ("<leader>F" . helm-do-grep-ag)
-              ("<leader>e" . dired)))
+              ("<leader>e" . dired))
+  )
 
 (use-package helm-ag
   :config

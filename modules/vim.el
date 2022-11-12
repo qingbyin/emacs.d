@@ -23,6 +23,7 @@
 ;; Provide gcc to comment out a line
 (use-package evil-commentary
   :after evil
+  :diminish evil-commentary-mode
   :config (evil-commentary-mode +1))
 
 ;; vim-sneak

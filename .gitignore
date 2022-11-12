@@ -11,6 +11,7 @@ company-statistics-cache.el
 recentf
 /url/cache/
 /request/
+/transient/
 bookmarks
 *.db
 *.org-id-locations

@@ -1,5 +1,6 @@
 ;; git gutter
 (use-package git-gutter
+  :diminish git-gutter-mode
   :init (global-git-gutter-mode +1)
   :bind (:map evil-normal-state-map
               ("gj" . git-gutter:next-hunk)
