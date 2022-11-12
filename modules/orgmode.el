@@ -1,8 +1,11 @@
+;; Org path
+(defvar my-org-dir "~/nutstore/cloud/todo")
+
 (use-package org
   :bind (("\C-cl" . org-store-link))
   :config
   ;; Set files for global org-todo list
-  (setq org-agenda-files (list "~/nutstore/cloud/todo"))
+  (setq org-agenda-files (list my-org-dir))
   ; Use evil mode in agenda view by default
   (evil-set-initial-state 'org-agenda-mode 'motion)
   ; Add a close date for a completed task
@@ -20,6 +23,10 @@
   (setq org-id-link-to-org-use-id t)
   ; Auto create id for each capture
   (add-hook 'org-capture-mode-hook #'org-id-get-create)
+  ; Use #+ATTR_ORG to resize image instead of its actual size
+  (setq org-image-actual-width nil)
+  ; Always show images in the org file
+  (setq org-startup-with-inline-images t)
 
   ; Open agenda
   (evil-define-key 'normal org-mode-map (kbd "<leader>a") (lambda () (interactive) (org-agenda nil "x")))
@@ -52,6 +59,12 @@
   ; Clock
   (evil-define-key '(normal visual) org-mode-map (kbd "<f5>") 'org-clock-in)
   (evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
+
+  ; Display image
+  ; refresh image settings after modifying #+ATTR_ORG
+  (evil-define-key 'normal org-mode-map (kbd "<leader>v") 'org-redisplay-inline-images) 
+  ; Enable/disalbe image display
+  (evil-define-key 'normal org-mode-map (kbd "<leader>V") 'org-toggle-inline-images)
 ;; -----------------------------------------------------------------------------
 ;; Config styles
 ;; -----------------------------------------------------------------------------
@@ -260,6 +273,17 @@
   (setq anki-editor-org-tags-as-anki-tags nil)
   (evil-define-key '(normal insert) org-mode-map (kbd "C-a") 'anki-editor-insert-note)
   (evil-define-key 'visual org-mode-map (kbd "C-C") 'anki-editor-cloze-region)
+  )
+
+;; Image import
+(use-package org-download
+  :init ; Must use :init instead of :config
+  ; (setq org-download-method 'directory)
+  (setq org-download-image-dir (concat my-org-dir "/assets/")
+        org-download-heading-lvl nil
+        org-download-timestamp "%Y%m%d-%H%M%S_"
+        org-download-image-org-width 300)
+  :bind (:map evil-insert-state-map ("C-p" . org-download-clipboard))
   )
 
 (provide 'orgmode)
