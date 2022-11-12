@@ -68,6 +68,14 @@
 ;; -----------------------------------------------------------------------------
 ;; Config styles
 ;; -----------------------------------------------------------------------------
+; All headings use the same color
+(set-face-attribute 'org-level-1 nil :inherit 'normal)
+(set-face-attribute 'org-level-2 nil :inherit 'normal)
+(set-face-attribute 'org-level-3 nil :inherit 'normal)
+(set-face-attribute 'org-level-4 nil :inherit 'normal)
+(set-face-attribute 'org-level-5 nil :inherit 'normal)
+(set-face-attribute 'org-level-6 nil :inherit 'normal)
+
 ; Set fac color for the TODO keyword and its statistic (i.e. [/])
 (set-face-attribute 'org-todo nil :foreground "PaleGreen")
 ; Strike through headlines for DONE tasks
