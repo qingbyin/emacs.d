@@ -19,6 +19,9 @@
   ; Collpase all when opening org files
   (setq org-startup-folded t)
 
+  ; Do not fold empty lines at the end of a heading
+  (setq org-cycle-separator-lines -1)
+
   ; Auto add org-id to make a link to the current entry 
   (setq org-id-link-to-org-use-id t)
   ; Auto create id for each capture
@@ -59,6 +62,9 @@
   ; Clock
   (evil-define-key '(normal visual) org-mode-map (kbd "<f5>") 'org-clock-in)
   (evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
+
+  ; Fix a fold issue: can not fold the org drawer.
+  (evil-define-key 'normal org-mode-map (kbd "za") 'org-cycle)
 
   ; Display image
   ; refresh image settings after modifying #+ATTR_ORG
