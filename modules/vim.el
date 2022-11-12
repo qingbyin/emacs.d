@@ -17,6 +17,7 @@
   (evil-define-key '(normal motion) 'global (kbd "C-k") 'evil-window-up)
   (evil-define-key '(normal motion) 'global (kbd "C-h") 'evil-window-left)
   (evil-define-key '(normal motion) 'global (kbd "C-l") 'evil-window-right)
+  (evil-define-key 'normal 'global (kbd "gh") 'display-local-help)
   )
 
 ;; Provide gcc to comment out a line

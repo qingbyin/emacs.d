@@ -8,6 +8,19 @@
   :ensure nil
   :hook (before-save . whitespace-cleanup))
 
+;; Check word spell
+(use-package flyspell
+  :diminish flyspell-mode
+  :hook ((prog-mode . flyspell-mode)
+         (text-mode . flyspell-prog-mode))
+  :custom
+  ;; Need install `aspell-en` in the system first
+  (ispell-program-name "aspell") ;; use aspell instead of ispell
+  (ispell-extra-args '("--lang=en" "--sug-mode=ultra")))
+;; Show spell suggestions in a popup menu
+(use-package flyspell-correct-popup
+  :bind (:map flyspell-mode-map ("C-SPC" . flyspell-correct-wrapper)))
+
 ;; Auto completion
 (use-package company
   ; Use tab to complete selection
