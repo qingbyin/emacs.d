@@ -16,6 +16,9 @@
 ; Auto move to the help window when opening it
 (setq help-window-select t)
 
+; Open files at last-edited position
+(save-place-mode 1)
+
 ; Show whitespaces (not need for the org mode)
 ; (global-whitespace-mode 1)
 ; (setq whitespace-style (quote (space-mark tab-mark)))
