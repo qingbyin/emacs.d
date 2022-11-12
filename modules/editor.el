@@ -8,5 +8,16 @@
   :ensure nil
   :hook (before-save . whitespace-cleanup))
 
+;; Auto completion
+(use-package company
+  ; Use tab to complete selection
+  :bind (:map company-active-map ("<tab>" . company-complete-selection))
+  :config
+  ; Set the minimum num of chars to invoke company (default is 3)
+  (setq company-minimum-prefix-length 1)
+  ; Always enable company
+  :hook (after-init . global-company-mode)
+  )
+
 
 (provide 'editor)

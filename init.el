@@ -78,6 +78,7 @@
 (require 'vim)
 (require 'search)
 (require 'git)
+(require 'editor)
 (require 'pinyin)
 (require 'orgmode)
 (require 'markdown)

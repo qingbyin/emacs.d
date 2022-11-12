@@ -15,3 +15,5 @@ bookmarks
 *.db
 *.org-id-locations
 tramp
+# Dump custom.el
+to-be-dumped.el

@@ -13,6 +13,8 @@
   (setq doom-modeline-buffer-file-name-style 'auto)
   (setq doom-modeline-buffer-encoding nil)
   (line-number-mode 0) ; Do not show the line number in modeline
+  ;; Whether display the minor modes in the mode-line.
+  (setq doom-modeline-minor-modes t)
   )
 
 ;; END
