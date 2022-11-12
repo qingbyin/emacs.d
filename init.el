@@ -72,6 +72,8 @@
 ;; -----------------------------------------------------------------------------
 ;; Load module path to know all files in it.
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+;; Use :diminish to hide unimportannt minor modes in the modeline
+(use-package diminish :demand t)
 ;; Packages
 (require 'startup)
 (require 'theme)
