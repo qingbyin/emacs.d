@@ -1,42 +1,19 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 ;; -----------------------------------------------------------------------------
-;; Startup configuration
-;; -----------------------------------------------------------------------------
-;; Minimum version required
-(let* ((minver "27.1"))
-  (when (version< emacs-version minver)
-    (error "Emacs v%s or higher is required." minver)))
-
-;; Garbage Collection (think it is an internal recycle bin) space size
-(defvar best-gc-cons-threshold
-  4000000
-  "Best default gc threshold value.  Should NOT be too big!")
-;; don't GC during startup to save time
-(setq gc-cons-threshold most-positive-fixnum)
-
-;; Define a variable to handle debug mode
-(defvar my-debug nil "Enable debug mode.")
-
-;; Measure load time
-(setq emacs-load-start-time (current-time))
-
-;; Move custom automatic generating code to custom.el file
-;; if not, the code will append to the end of this init.el
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-
-;; Disable beep when trying to move beyond the end of the file
-(setq ring-bell-function 'ignore)
-
-;; -----------------------------------------------------------------------------
 ;; Basic config
 ;; -----------------------------------------------------------------------------
-; Indentation uses whitespaces instead of tabs
+(setq ring-bell-function 'ignore) ; Disable warning beep
+
+; Indentation uses 4 whitespaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(global-display-line-numbers-mode 1)
-(setq display-line-numbers-type 'visual)
 
+; Show relative line numbers
+(global-display-line-numbers-mode 1)
+(setq display-line-numbers-type 'visual) ; Fix relative line numbers after collapse
+
+; Auto move to the help window when opening it
 (setq help-window-select t)
 
 ; Show whitespaces (not need for the org mode)
@@ -54,8 +31,7 @@
       scroll-conservatively 101
       scroll-margin 0
       scroll-preserve-screen-position t
-      ;; Reduce cursor lag by a tiny bit by not auto-adjusting `window-vscroll'
-      ;; for tall lines.
+      ;; Reduce cursor lag by a tiny bit by not auto-adjusting `window-vscroll' for tall lines.
       auto-window-vscroll nil
       ;; mouse
       mouse-wheel-scroll-amount '(2 ((shift) . hscroll))
@@ -69,19 +45,39 @@
 ; Note: font size pt = height/10
 (set-face-attribute 'default nil :height 120)
 
+; Dump custom-set-variables to a garbage file and don’t load it
+(setq custom-file (concat user-emacs-directory "to-be-dumped.el"))
+
+;; -----------------------------------------------------------------------------
+;; Install package installer (must come bofore loading modules)
+;; -----------------------------------------------------------------------------
+(require 'package)
+(setq package-archives
+      '(
+        ("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
+        ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")
+        ("melpa-stable" . "https://mirrors.ustc.edu.cn/elpa/stable-melpa/")
+        ("nongnu" . "http://mirrors.ustc.edu.cn/elpa/nongnu/")
+        ))
+;; Install user-package for easy package installation
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+; Specify `:ensure t` in all packages we want to install
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 ;; -----------------------------------------------------------------------------
 ;; Load modules
 ;; -----------------------------------------------------------------------------
-;; Load path ./lisp/ in order to know all files in it.
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
-;; Allow to preload functions
-;; (require 'init-autoload)
-;; Collection of helper functions
-;; (require-init 'init-utils)
-;; 3rd party packages
-(require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
-;; Package
-(require 'init-elpa)
-(require 'init-spelling)
-(require 'init-org)
+;; Load module path to know all files in it.
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+;; Packages
+(require 'startup)
+(require 'theme)
+(require 'vim)
+(require 'search)
+(require 'git)
+(require 'pinyin)
+(require 'orgmode)
+(require 'markdown)

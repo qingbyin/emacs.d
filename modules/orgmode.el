@@ -1,68 +1,54 @@
-;; org configuration
-
-(require 'org)
-(define-key global-map "\C-cl" 'org-store-link)
-; Use evil mode in agenda view by default
-(evil-set-initial-state 'org-agenda-mode 'motion)
-; Add a close date for a completed task
-(setq org-log-done t)
-
-; auto list
-; (require-package 'org-autolist)
-; (add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
-; Evil mode
-(evil-define-key 'normal org-mode-map (kbd "<leader>a")
-                 (lambda () (interactive) (org-agenda nil "x")))
-(evil-define-key 'motion org-agenda-mode-map (kbd "a")
-                 (lambda () (interactive) (org-agenda nil "x")))
-(evil-define-key 'normal org-mode-map (kbd "T")
-                 (lambda () (interactive) (org-todo "TODO")))
-(evil-define-key 'normal org-mode-map (kbd "N")
-                 (lambda () (interactive) (org-todo "NEXT")))
-(evil-define-key 'normal org-mode-map (kbd "D")
-                 (lambda () (interactive) (org-todo "DONE")))
-(evil-define-key 'motion org-agenda-mode-map (kbd "D")
-                 (lambda () (interactive) (org-agenda-todo "DONE")))
-(evil-define-key 'normal org-mode-map (kbd "W")
-                 (lambda () (interactive) (org-todo "WAIT")))
-(evil-define-key 'normal org-mode-map (kbd "S")
-                 (lambda () (interactive) (org-todo "STOP")))
-(evil-define-key '(normal visual) org-mode-map (kbd "<leader>r") 'org-refile)
-(evil-define-key '(normal visual) org-mode-map (kbd "<leader>R") 'org-archive-subtree-default-with-confirmation)
-(evil-define-key '(normal visual) org-mode-map (kbd "R") 'org-archive-subtree-default-with-confirmation)
-(evil-define-key 'normal org-mode-map (kbd "<leader>c")
-                 (lambda () (interactive) (org-capture nil "t")))
-; (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
-(evil-define-key 'normal org-mode-map (kbd "t") 'org-insert-todo-heading)
-(evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
-(evil-define-key 'normal org-mode-map (kbd "<leader>d") 'org-deadline)
-(evil-define-key 'normal org-mode-map (kbd "<leader>s") 'org-schedule)
-(evil-define-key 'normal org-mode-map (kbd "E") 'org-set-effort)
-
-(evil-define-key 'normal org-mode-map (kbd "<") 'org-metaleft)
-(evil-define-key 'normal org-mode-map (kbd ">") 'org-metaright)
-
-(evil-define-key 'normal org-mode-map (kbd "<f1>") 'org-narrow-to-subtree)
-(evil-define-key 'normal org-mode-map (kbd "<f2>") 'widen)
-(evil-define-key '(normal visual) org-mode-map (kbd "<f5>") 'org-clock-in)
-(evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
-
-(setq org-use-speed-commands t)
-
+(use-package org
+  :bind (("\C-cl" . org-store-link))
+  :config
+  ;; Set files for global org-todo list
+  (setq org-agenda-files (list "~/nutstore/cloud/todo"))
+  ; Use evil mode in agenda view by default
+  (evil-set-initial-state 'org-agenda-mode 'motion)
+  ; Add a close date for a completed task
+  (setq org-log-done t)
+  ; Hide org state changes in drawer
+  (setq org-log-into-drawer "LOGBOOK")
+  ; Cannot set a headline to DONE if children aren’t DONE
+  (setq-default org-enforce-todo-dependencies t)
+  ; org-indent mode, i.e. add a virtual indentaion based on the headline level.
+  (setq org-startup-indented t)
+  ; Collpase all when opening org files
+  (setq org-startup-folded t)
+  ; Open agenda
+  (evil-define-key 'normal org-mode-map (kbd "<leader>a") (lambda () (interactive) (org-agenda nil "x")))
+  (evil-define-key 'motion org-agenda-mode-map (kbd "a") (lambda () (interactive) (org-agenda nil "x")))
+  ; Change todo states
+  (evil-define-key 'normal org-mode-map (kbd "T") (lambda () (interactive) (org-todo "TODO")))
+  (evil-define-key 'normal org-mode-map (kbd "N") (lambda () (interactive) (org-todo "NEXT")))
+  (evil-define-key 'normal org-mode-map (kbd "D") (lambda () (interactive) (org-todo "DONE")))
+  (evil-define-key 'motion org-agenda-mode-map (kbd "D") (lambda () (interactive) (org-agenda-todo "DONE")))
+  (evil-define-key 'normal org-mode-map (kbd "W") (lambda () (interactive) (org-todo "WAIT")))
+  (evil-define-key 'normal org-mode-map (kbd "S") (lambda () (interactive) (org-todo "STOP")))
+  ; Refile/archive
+  (evil-define-key '(normal visual) org-mode-map (kbd "<leader>r") 'org-refile)
+  (evil-define-key '(normal visual) org-mode-map (kbd "<leader>R") 'org-archive-subtree-default-with-confirmation)
+  (evil-define-key '(normal visual) org-mode-map (kbd "R") 'org-archive-subtree-default-with-confirmation)
+  ; Capture
+  (evil-define-key 'normal org-mode-map (kbd "<leader>c") (lambda () (interactive) (org-capture nil "t")))
+  ;
+  (evil-define-key 'normal org-mode-map (kbd "t") 'org-insert-todo-heading)
+  (evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
+  (evil-define-key 'normal org-mode-map (kbd "<leader>d") 'org-deadline)
+  (evil-define-key 'normal org-mode-map (kbd "<leader>s") 'org-schedule)
+  (evil-define-key 'normal org-mode-map (kbd "E") 'org-set-effort)
+  ; Change heading level
+  (evil-define-key 'normal org-mode-map (kbd "<") 'org-metaleft)
+  (evil-define-key 'normal org-mode-map (kbd ">") 'org-metaright)
+  ; Narrow/widen
+  (evil-define-key 'normal org-mode-map (kbd "<f1>") 'org-narrow-to-subtree)
+  (evil-define-key 'normal org-mode-map (kbd "<f2>") 'widen)
+  ; Clock
+  (evil-define-key '(normal visual) org-mode-map (kbd "<f5>") 'org-clock-in)
+  (evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
 ;; -----------------------------------------------------------------------------
 ;; Config styles
 ;; -----------------------------------------------------------------------------
-; Extra line spacing
-(setq line-spacing 0.1)
-
-; Beutiful bullets
-(require-package 'org-bullets)
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
-; org-indent mode, i.e. add a virtual indentaion based on the headline level.
-(setq org-startup-indented t)
-
 ; Set fac color for the TODO keyword and its statistic (i.e. [/])
 (set-face-attribute 'org-todo nil :foreground "PaleGreen")
 ; Strike through headlines for DONE tasks
@@ -70,23 +56,15 @@
 ; Set text face style following DONE keyword 
 (set-face-attribute 'org-headline-done nil :strike-through t :foreground "dark grey")
 (set-face-attribute 'org-link nil :inherit 'normal :underline nil :foreground "#089696")
-
 ; Set other keywords color face
 (setq org-todo-keyword-faces
-      (quote (
-              ("NEXT" :foreground "#b54845" :weight bold)
+      (quote (("NEXT" :foreground "#b54845" :weight bold)
               ("WAIT" :foreground "#f9750a" :weight bold))))
+  )
 
-; Collpase all when opening org files
-(setq org-startup-folded t)
-
-;; -----------------------------------------------------------------------------
-;; Set files for global org-todo list
-;; -----------------------------------------------------------------------------
-(setq org-agenda-files (list "~/nutstore/cloud/todo"))
 
 ;; -----------------------------------------------------------------------------
-;; Create task templates
+;; Create capture templates
 ;; -----------------------------------------------------------------------------
 (setq org-capture-templates
       '(
@@ -100,6 +78,10 @@
         ("L" "Protocol Link" entry (file "~/nutstore/cloud/todo/inbox.org")
         "* TODO %? [[%:link][%:description]] \nCaptured On: %U")
         ))
+
+; org-protocol is used to create capture notes from other apps.
+(server-start)
+(require 'org-protocol)
 
 ;; -----------------------------------------------------------------------------
 ;; Config org-todo list
@@ -117,8 +99,6 @@
      "|"
      "STOP(s)" ; stopped waiting, decided not to work on it
      )))
-; Cannot set a headline to DONE if children aren’t DONE
-(setq-default org-enforce-todo-dependencies t)
 
 ; Auto change from NEXT to TODO if the task are now a project and not a task.
 ; (i.e. make sure NEXT is for a task and not a project)
@@ -132,7 +112,6 @@
         (while (org-up-heading-safe)
           (when (member (nth 2 (org-heading-components)) (list "NEXT"))
             (org-todo "TODO")))))))
-
 (add-hook 'org-after-todo-state-change-hook 'mark-next-parent-tasks-todo 'append)
 (add-hook 'org-clock-in-hook 'mark-next-parent-tasks-todo 'append)
 
@@ -141,11 +120,7 @@
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
   (let (org-log-done org-log-states)   ; turn off logging
     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-
 (add-hook 'org-after-todo-statistics-hook #'org-summary-todo)
-
-; Hide org state changes in drawer
-(setq org-log-into-drawer "LOGBOOK")
 
 ;; -----------------------------------------------------------------------------
 ; Config refile
@@ -194,12 +169,6 @@
         ))
 
 ;; -----------------------------------------------------------------------------
-;; Other features
-;; -----------------------------------------------------------------------------
-; org-protocol is used to create capture notes from other apps.
-(server-start)
-(require 'org-protocol)
-
 ; Auto commit when Emacs is idle for 1800s(0.5 hour)
 (run-with-idle-timer 1800 3600 'org-commit)
 (defun org-commit ()
@@ -210,6 +179,7 @@
       (shell-command "git commit -a -m 'Auto update'"))
     )
 
+;; -----------------------------------------------------------------------------
 ;; 让中文也可以不加空格就使用行内格式(setcar (nthcdr 0
 (setcar (nthcdr 0 org-emphasis-regexp-components) " \t('\"{[:nonascii:]")
 (setcar (nthcdr 1 org-emphasis-regexp-components) "- \t.,:!?;'\")}\\[[:nonascii:]")
@@ -218,6 +188,7 @@
 ;; 规定上下标必须加{}，否则中文使用下划线时它会以为是两个连着的下标
 (setq org-use-sub-superscripts "{}")
 
+;; -----------------------------------------------------------------------------
 ; Set 强调字体style
 (setq org-emphasis-alist
       '(("*" (bold :foreground "#b54845" ))
@@ -228,21 +199,35 @@
         ("+" (:strike-through t))))
 
 ; Auto show/hide emphasis markers, links
-(require-package 'org-appear)
-(setq org-hide-emphasis-markers t)
+(use-package org-appear
+  :hook (org-mode-hook . org-appear-mode)
+  :config
+  (setq org-hide-emphasis-markers t)
 ; (setq org-appear-autolinks t)
 ; (setq org-link-descriptive t)
-; Toogle or-appear in evil insert mode only
-(add-hook 'org-mode-hook 'org-appear-mode)
+  )
 
+;; -----------------------------------------------------------------------------
+; Beutiful bullets
+(use-package org-superstar
+  :init (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
+
+;; -----------------------------------------------------------------------------
+;; Show planned effort time and real used time (clock) in the cookie 
+(use-package org-custom-cookies
+  :bind (:map evil-normal-state-map ("<leader>u" . org-custom-cookies-update-all)))
+
+;; -----------------------------------------------------------------------------
 ; org-roam
-(require-package 'org-roam)
-(require 'org-roam)
-(setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
-(org-roam-db-autosync-mode)
+(use-package org-roam
+  :config
+  (setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
+  (org-roam-db-autosync-mode)
+  )
 ; Auto add org-id to make a link to the current entry 
 (setq org-id-link-to-org-use-id t)
-; (add-hook 'org-capture-mode-hook #'org-id-get-create) ; Auto create id for each capture
+; Auto create id for each capture
+(add-hook 'org-capture-mode-hook #'org-id-get-create)
 ; Complete roam node even if not within a bracketed link(i.e. [[]])
 (setq org-roam-completion-system 'helm)
 (setq org-roam-completion-everywhere t)
@@ -267,12 +252,13 @@
 (global-set-key (kbd "<C-f>") 'org-roam-node-find)
 
 ; Anki with org
-(require-package 'anki-editor)
-(add-hook 'org-mode-hook 'anki-editor-mode)
-; Do not count org tags as ANki tags
-(setq anki-editor-org-tags-as-anki-tags nil)
-(evil-define-key '(normal insert) org-mode-map (kbd "C-a") 'anki-editor-insert-note)
-(evil-define-key 'visual org-mode-map (kbd "C-C") 'anki-editor-cloze-region)
+(use-package anki-editor
+  :hook (org-mode-hook . anki-editor-mode)
+  :config
+  ; Do not count org tags as ANki tags
+  (setq anki-editor-org-tags-as-anki-tags nil)
+  (evil-define-key '(normal insert) org-mode-map (kbd "C-a") 'anki-editor-insert-note)
+  (evil-define-key 'visual org-mode-map (kbd "C-C") 'anki-editor-cloze-region)
+  )
 
-; End
-(provide 'init-org) ;;; end
+(provide 'orgmode)
