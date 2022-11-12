@@ -15,6 +15,12 @@
   (setq org-startup-indented t)
   ; Collpase all when opening org files
   (setq org-startup-folded t)
+
+  ; Auto add org-id to make a link to the current entry 
+  (setq org-id-link-to-org-use-id t)
+  ; Auto create id for each capture
+  (add-hook 'org-capture-mode-hook #'org-id-get-create)
+
   ; Open agenda
   (evil-define-key 'normal org-mode-map (kbd "<leader>a") (lambda () (interactive) (org-agenda nil "x")))
   (evil-define-key 'motion org-agenda-mode-map (kbd "a") (lambda () (interactive) (org-agenda nil "x")))
@@ -222,12 +228,7 @@
 (use-package org-roam
   :config
   (setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
-  (org-roam-db-autosync-mode)
-  )
-; Auto add org-id to make a link to the current entry 
-(setq org-id-link-to-org-use-id t)
-; Auto create id for each capture
-(add-hook 'org-capture-mode-hook #'org-id-get-create)
+  (org-roam-db-autosync-mode))
 ; Complete roam node even if not within a bracketed link(i.e. [[]])
 (setq org-roam-completion-system 'helm)
 (setq org-roam-completion-everywhere t)
