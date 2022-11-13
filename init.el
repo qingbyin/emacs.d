@@ -42,6 +42,7 @@
 
 ; Key bindings
 (global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "<f12>") (lambda() (interactive)(find-file user-emacs-directory)))
 
 ; Font settings
 (set-face-attribute 'default nil :family "FiraCode QiHei NF")
