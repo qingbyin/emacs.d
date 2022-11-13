@@ -8,7 +8,11 @@
               ("<leader>h" . helm-apropos)
               ("<leader>x" . helm-M-x)
               ("<leader>F" . helm-do-grep-ag)
-              ("<leader>e" . dired))
+              ("<leader>e" . dired)
+              :map helm-map
+              ("C-w" . evil-delete-backward-word)
+              ("C-e" . move-end-of-line)
+              )
   )
 
 (use-package helm-ag
