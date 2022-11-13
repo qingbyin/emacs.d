@@ -22,7 +22,7 @@
   ; Do not fold empty lines at the end of a heading
   (setq org-cycle-separator-lines -1)
 
-  ; Auto add org-id to make a link to the current entry 
+  ; Auto add org-id to make a link to the current entry
   (setq org-id-link-to-org-use-id t)
   ; Auto create id for each capture
   (add-hook 'org-capture-mode-hook #'org-id-get-create)
@@ -64,11 +64,12 @@
   (evil-define-key '(normal visual) org-mode-map (kbd "<f6>") 'org-clock-out)
 
   ; Fix a fold issue: can not fold the org drawer.
-  (evil-define-key 'normal org-mode-map (kbd "za") 'org-cycle)
+  (evil-define-key 'normal org-mode-map (kbd "qa") 'org-cycle)
+  (evil-define-key 'normal org-mode-map (kbd "q;") 'org-cycle)
 
   ; Display image
   ; refresh image settings after modifying #+ATTR_ORG
-  (evil-define-key 'normal org-mode-map (kbd "<leader>v") 'org-redisplay-inline-images) 
+  (evil-define-key 'normal org-mode-map (kbd "<leader>v") 'org-redisplay-inline-images)
   ; Enable/disalbe image display
   (evil-define-key 'normal org-mode-map (kbd "<leader>V") 'org-toggle-inline-images)
 ;; -----------------------------------------------------------------------------
@@ -86,7 +87,7 @@
 (set-face-attribute 'org-todo nil :foreground "PaleGreen")
 ; Strike through headlines for DONE tasks
 (set-face-attribute 'org-done nil :strike-through t :foreground "dark grey")
-; Set text face style following DONE keyword 
+; Set text face style following DONE keyword
 (set-face-attribute 'org-headline-done nil :strike-through t :foreground "dark grey")
 (set-face-attribute 'org-link nil :inherit 'normal :underline nil :foreground "#089696")
 ; Set other keywords color face
@@ -231,73 +232,4 @@
         ("~" (:background "#343941"))
         ("+" (:strike-through t))))
 
-; Auto show/hide emphasis markers, links
-(use-package org-appear
-  :hook (org-mode-hook . org-appear-mode)
-  :config
-  (setq org-hide-emphasis-markers t)
-; (setq org-appear-autolinks t)
-; (setq org-link-descriptive t)
-  )
-
-;; -----------------------------------------------------------------------------
-; Beutiful bullets
-(use-package org-superstar
-  :init (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
-
-;; -----------------------------------------------------------------------------
-;; Show planned effort time and real used time (clock) in the cookie 
-(use-package org-custom-cookies
-  :bind (:map evil-normal-state-map ("<leader>u" . org-custom-cookies-update-all)))
-
-;; -----------------------------------------------------------------------------
-; org-roam
-(use-package org-roam
-  :config
-  (setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
-  (org-roam-db-autosync-mode))
-; Complete roam node even if not within a bracketed link(i.e. [[]])
-(setq org-roam-completion-system 'helm)
-(setq org-roam-completion-everywhere t)
-
-; (add-to-list 'display-buffer-alist
-;            '(("\\*org-roam\\*"
-;               (display-buffer-in-direction)
-;               (direction . right)
-;               (window-width . 0.33)
-;               (window-height . fit-window-to-buffer))))
-
-; Default templates
-(setq org-roam-capture-templates
-      '(("d" "default" plain "%?"
-         :immediate-finish t
-         :target (file+head "notes/%<%Y%m%d%H%M%S>-${slug}.org"
-                            "#+title: ${title}\n#+date: %u\n- tags::")
-         :unnarrowed t)))
-
-(define-key input-decode-map "\C-i" [C-i]) ; Distinguish C-i from TAB
-(global-set-key (kbd "<C-i>") 'org-roam-node-insert)
-(global-set-key (kbd "<C-f>") 'org-roam-node-find)
-
-; Anki with org
-(use-package anki-editor
-  :hook (org-mode-hook . anki-editor-mode)
-  :config
-  ; Do not count org tags as ANki tags
-  (setq anki-editor-org-tags-as-anki-tags nil)
-  (evil-define-key '(normal insert) org-mode-map (kbd "C-a") 'anki-editor-insert-note)
-  (evil-define-key 'visual org-mode-map (kbd "C-C") 'anki-editor-cloze-region)
-  )
-
-;; Image import
-(use-package org-download
-  :init ; Must use :init instead of :config
-  ; (setq org-download-method 'directory)
-  (setq org-download-image-dir (concat my-org-dir "/assets/")
-        org-download-heading-lvl nil
-        org-download-timestamp "%Y%m%d-%H%M%S_"
-        org-download-image-org-width 300)
-  :bind (:map evil-insert-state-map ("C-p" . org-download-clipboard))
-  )
-
-(provide 'orgmode)
+(provide 'org-core)

@@ -40,7 +40,7 @@
       mouse-wheel-scroll-amount '(2 ((shift) . hscroll))
       mouse-wheel-scroll-amount-horizontal 2)
 
-; Keybindgs
+; Key bindings
 (global-set-key (kbd "C-s") 'save-buffer)
 
 ; Font settings
@@ -85,5 +85,6 @@
 (require 'git)
 (require 'editor)
 (require 'pinyin)
-(require 'orgmode)
+(require 'org-core)
+(require 'org-extension)
 (require 'markdown)
