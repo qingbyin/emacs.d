@@ -11,8 +11,8 @@
 ;; Check word spell
 (use-package flyspell
   :diminish flyspell-mode
-  :hook ((prog-mode . flyspell-mode)
-         (text-mode . flyspell-prog-mode))
+  :hook ((prog-mode . flyspell-prog-mode)
+         (text-mode . flyspell-mode))
   :custom
   ;; Need install `aspell-en` in the system first
   (ispell-program-name "aspell") ;; use aspell instead of ispell
@@ -34,5 +34,15 @@
                              company-echo-metadata-frontend))
   ; Always enable company
   :hook (after-init . global-company-mode))
+
+;; indent guide (i.e. vertical bar)
+(use-package highlight-indent-guides
+  :custom ; Must use :custom instead of :config
+  ; Dynamic highlight the current indentation line
+  (highlight-indent-guides-method 'character)
+  (highlight-indent-guides-responsive 'top)
+  (highlight-indent-guides-auto-enabled t) ; auto line color
+  :hook ((prog-mode . highlight-indent-guides-mode)
+         (text-mode . highlight-indent-guides-mode)))
 
 (provide 'editor)
