@@ -38,10 +38,11 @@
 ;; indent guide (i.e. vertical bar)
 (use-package highlight-indent-guides
   :custom ; Must use :custom instead of :config
-  ; Dynamic highlight the current indentation line
   (highlight-indent-guides-method 'character)
-  (highlight-indent-guides-responsive 'top)
+  ;; (highlight-indent-guides-responsive 'top) ; dynamic highlight bar
   (highlight-indent-guides-auto-enabled t) ; auto line color
+  ; Increase the bar color (since it's barely visible in dark theme)
+  (highlight-indent-guides-auto-character-face-perc 70)
   :hook ((prog-mode . highlight-indent-guides-mode)
          (text-mode . highlight-indent-guides-mode)))
 
