@@ -18,6 +18,15 @@
   (evil-define-key '(normal motion) 'global (kbd "C-h") 'evil-window-left)
   (evil-define-key '(normal motion) 'global (kbd "C-l") 'evil-window-right)
   (evil-define-key 'normal 'global (kbd "gh") 'display-local-help)
+  ; Remap z operation to q
+  (evil-define-key 'normal 'global (kbd "q") nil)
+  (evil-define-key 'normal 'global (kbd "qq") 'evil-scroll-line-to-center)
+  (evil-define-key 'normal 'global (kbd "<leader>SPC") 'evil-scroll-line-to-center)
+  (evil-define-key 'normal 'global (kbd "qa") 'evil-toggle-fold)
+  (evil-define-key 'normal 'global (kbd "qo") 'evil-open-fold)
+  (evil-define-key 'normal 'global (kbd "qO") 'evil-open-fold-rec)
+  (evil-define-key 'normal 'global (kbd "qc") 'evil-close-fold)
+  (evil-define-key 'normal 'global (kbd "qC") 'evil-close-fold-rec)
   )
 
 ;; Provide gcc to comment out a line
@@ -39,4 +48,3 @@
 
 ;; END
 (provide 'vim)
-
