@@ -44,6 +44,8 @@
 ;; -----------------------------------------------------------------------------
 ;; Beautiful round corner keywords, org-block
 (use-package svg-tag-mode
+  :custom
+  (svg-tag-action-at-point 'edit)
   :config
   (defconst date-re "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}")
   (defconst time-re "[0-9]\\{2\\}:[0-9]\\{2\\}")
@@ -93,11 +95,10 @@
           ("WAIT" . ((lambda (tag) (svg-tag-make "WAIT" :face 'myface-wait :inverse t :margin 0))))
           ("DONE" . ((lambda (tag) (svg-tag-make "DONE" :face 'org-done :margin 0))))
           ("STOP" . ((lambda (tag) (svg-tag-make "STOP" :face 'org-done :margin 0))))
-          ("NOTE" . ((lambda (tag) (svg-tag-make "NOTE" :face 'myface-wait :inverse t :margin 0))))
+          ("NOTE" . ((lambda (tag) (svg-tag-make "NOTE" :face 'org-priority :inverse t :margin 0))))
 
-          ;; code block ~code~
-          ("~[0-9a-zA-Z- ]+?~" . ((lambda (tag)
-                                    (svg-tag-make tag :beg 1 :end -1 :inverse t :margin 0))))
+          ;; code block ~code~ (TODO: not working)
+          ;; ("\\(\~[0-9a-zA-Z]+\~\\)" . ((lambda (tag) (svg-tag-make tag :beg 1 :end -1 :inverse t :margin 0))))
 
           ;; Citation of the form [cite:@Knuth:1984]
           ("\\(\\[cite:@[A-Za-z]+:\\)" . ((lambda (tag)
