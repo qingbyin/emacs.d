@@ -8,6 +8,9 @@
 ;; Disable default startup screen
 (setq inhibit-startup-screen t)
 
+;; Disable byte compile warning
+(setq warning-minimum-level :emergency)
+
 ;; Startup screen shows recently used files
 (use-package dashboard :config (dashboard-setup-startup-hook))
 
