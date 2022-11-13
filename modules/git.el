@@ -7,6 +7,8 @@
               ("gk" . git-gutter:previous-hunk)
               ("<leader>gd" . git-gutter:popup-hunk)
               ("gs" . git-gutter:stage-hunk))
+  :custom
+  (git-gutter:update-interval 0.1) ; Live updating git status
   )
 
 (use-package magit
