@@ -140,7 +140,7 @@
 ;; -----------------------------------------------------------------------------
 ; Auto show/hide emphasis markers, links
 (use-package org-appear
-  :hook (org-mode-hook . org-appear-mode)
+  :hook (org-mode . org-appear-mode)
   :config
   (setq org-hide-emphasis-markers t)
 ; (setq org-appear-autolinks t)
@@ -162,7 +162,7 @@
 ;; -----------------------------------------------------------------------------
 ;; Anki with org
 (use-package anki-editor
-  :hook (org-mode-hook . anki-editor-mode)
+  :hook (org-mode . anki-editor-mode)
   :config
   ; Do not count org tags as ANki tags
   (setq anki-editor-org-tags-as-anki-tags nil)
