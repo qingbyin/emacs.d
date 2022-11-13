@@ -1,4 +1,5 @@
-; Extra line spacing
+;;
+;; Extra line spacing
 (setq line-spacing 0.1)
 
 ;; View the most popular theme in https://emacsthemes.com/popular/index.html
@@ -7,7 +8,7 @@
 ;; Mode line theme (nerd font rquired)
 ; (use-package powerline :init (powerline-default-theme))
 ; (use-package airline-themes :config (load-theme 'airline-doom-molokai t))
-(use-package doom-modeline 
+(use-package doom-modeline
   :init (doom-modeline-mode 1)
   :config
   (setq doom-modeline-buffer-file-name-style 'auto)
