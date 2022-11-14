@@ -85,6 +85,7 @@
 (require 'search)
 (require 'git)
 (require 'editor)
+(require 'completion)
 (require 'pinyin)
 (require 'org-core)
 (require 'org-extension)
