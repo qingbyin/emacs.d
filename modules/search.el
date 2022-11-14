@@ -4,7 +4,7 @@
   :hook (after-init . helm-mode)
   :bind (:map evil-normal-state-map
               ("C-p" . helm-find-files)
-              ("C-P" . helm-buffers-list)
+              ("C-S-p" . helm-buffers-list)
               ("<leader>h" . helm-apropos)
               ("<leader>x" . helm-M-x)
               ("<leader>F" . helm-do-grep-ag)
