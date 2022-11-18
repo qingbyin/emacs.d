@@ -96,6 +96,7 @@
           ("DONE" . ((lambda (tag) (svg-tag-make "DONE" :face 'org-done :margin 0))))
           ("STOP" . ((lambda (tag) (svg-tag-make "STOP" :face 'org-done :margin 0))))
           ("NOTE" . ((lambda (tag) (svg-tag-make "NOTE" :face 'org-priority :inverse t :margin 0))))
+          ("QUIZ" . ((lambda (tag) (svg-tag-make "QUIZ" :face 'myface-next :inverse t :margin 0))))
 
           ;; code block ~code~ (TODO: not working)
           ;; ("\\(\~[0-9a-zA-Z]+\~\\)" . ((lambda (tag) (svg-tag-make tag :beg 1 :end -1 :inverse t :margin 0))))
@@ -142,10 +143,13 @@
 ; Auto show/hide emphasis markers, links
 (use-package org-appear
   :hook (org-mode . org-appear-mode)
-  :config
-  (setq org-hide-emphasis-markers t)
+  ;; :custom
+  ;; (org-appear-autoentities t)
+  ;; (org-pretty-entities t)
 ; (setq org-appear-autolinks t)
 ; (setq org-link-descriptive t)
+  :config
+  (org-hide-emphasis-markers t)
   )
 
 ;; -----------------------------------------------------------------------------
@@ -157,8 +161,9 @@
         org-download-heading-lvl nil
         org-download-timestamp "%Y%m%d-%H%M%S_"
         org-download-image-org-width 300)
-  :bind (:map evil-insert-state-map ("C-p" . org-download-clipboard))
+  :bind (:map evil-insert-state-map ("C-]" . org-download-clipboard))
   )
+
 
 ;; -----------------------------------------------------------------------------
 ;; Anki with org
@@ -176,5 +181,19 @@
 (use-package org-custom-cookies
   :bind (:map evil-normal-state-map ("<leader>u" . org-custom-cookies-update-all)))
 
+;; -----------------------------------------------------------------------------
+(use-package org-alert
+  :config
+  (alert-default-style 'notifications)
+  (org-alert-enable)
+  )
+
+;; -----------------------------------------------------------------------------
+;; Auto Latex math preview (conflicted with svg-tag)
+(use-package org-fragtog
+  ;; :diminish t
+  ;; :hook (org-mode org-fragtog-mode)
+  )
+(add-hook 'org-mode-hook 'org-fragtog-mode)
 
 (provide 'org-extension)
