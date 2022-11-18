@@ -6,10 +6,12 @@
 
 (use-package company
   ; Use tab to complete selection
-  :bind (:map company-active-map ("<tab>" . company-complete-selection))
+  :bind (:map company-active-map
+              ("<tab>" . company-complete-selection)
+              ("RET" . nil))
   :config
   ; Set the minimum num of chars to invoke company (default is 3)
-  (setq company-minimum-prefix-length 1
+  (setq company-minimum-prefix-length 2
         company-idle-delay 0.1
         company-tooltip-align-annotations t
         company-backends '((company-yasnippet company-capf company-dabbrev company-ispell :separate) company-files)
