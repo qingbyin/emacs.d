@@ -5,7 +5,7 @@
   :bind (:map evil-normal-state-map
               ("C-p" . helm-find-files)
               ("C-S-p" . helm-buffers-list)
-              ("<leader>h" . helm-apropos)
+              ("<leader>hh" . helm-apropos)
               ("<leader>x" . helm-M-x)
               ("<leader>F" . helm-do-grep-ag)
               ("<leader>e" . dired)
@@ -13,9 +13,7 @@
               ("C-w" . evil-delete-backward-word)
               ("C-e" . move-end-of-line)
               ("C-j" . helm-next-line)
-              ("C-k" . helm-previous-line)
-              )
-  )
+              ("C-k" . helm-previous-line)))
 
 (use-package helm-ag
   :config

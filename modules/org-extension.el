@@ -3,7 +3,9 @@
 (use-package org-roam
   :config
   (setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
-  (org-roam-db-autosync-mode))
+  (org-roam-db-autosync-mode)
+  :bind
+  (:map evil-normal-state-map ("<leader>oa" . org-roam-alias-add)))
 ; Complete roam node even if not within a bracketed link(i.e. [[]])
 (setq org-roam-completion-system 'helm)
 (setq org-roam-completion-everywhere t)

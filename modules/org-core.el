@@ -2,7 +2,7 @@
 (defvar my-org-dir "~/nutstore/cloud/todo")
 
 (use-package org
-  :bind (("\C-cl" . org-store-link))
+  :bind (:map evil-normal-state-map ("<leader>oi" . org-id-get-create))
   :config
   ;; Set files for global org-todo list
   (setq org-agenda-files (list my-org-dir))

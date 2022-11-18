@@ -40,10 +40,6 @@
       mouse-wheel-scroll-amount '(2 ((shift) . hscroll))
       mouse-wheel-scroll-amount-horizontal 2)
 
-; Key bindings
-(global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "<f12>") (lambda() (interactive)(find-file user-emacs-directory)))
-
 ; Font settings
 (set-face-attribute 'default nil :family "FiraCode QiHei NF")
 ; Note: font size pt = height/10
@@ -90,3 +86,4 @@
 (require 'org-core)
 (require 'org-extension)
 (require 'markdown)
+(require 'whichkey)
