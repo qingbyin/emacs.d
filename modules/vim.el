@@ -2,7 +2,7 @@
   :demand t
   :init
   ; Fix org-checklist insertion issue at normal mode
-  ;; (setq evil-move-beyond-eol t)
+  (setq evil-disable-insert-state-bindings t) ; Disable default insert bindings
   (setq evil-undo-system  'undo-redo) ; Must be set before loading evil
   :hook (after-init . evil-mode) ; Enable evil mode while startup
   :bind (:map evil-normal-state-map
@@ -11,10 +11,7 @@
               ("k" . evil-previous-visual-line)
               ("<leader>q" . kill-current-buffer)
               :map evil-insert-state-map
-              ("C-v" . evil-paste-after)
-              ("C-n" . nil)
-              ("C-p" . nil)
-              ("C-k" . nil))
+              ("C-v" . evil-paste-after))
   :custom
   (evil-want-minibuffer t) ; enable evil mode in the input buffer at the bottom
   :config
