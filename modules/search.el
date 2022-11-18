@@ -12,6 +12,8 @@
               :map helm-map
               ("C-w" . evil-delete-backward-word)
               ("C-e" . move-end-of-line)
+              ("C-j" . helm-next-line)
+              ("C-k" . helm-previous-line)
               )
   )
 
