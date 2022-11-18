@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: method review
+# key: mreview
+# --
+- $1
+ - key idea:$2
+ - pros
+   - $3
+ - cons
+   - $0
+ -

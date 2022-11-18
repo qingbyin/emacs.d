@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: pros cons
+# key: pros
+# --
+- pros:
+  - $0
+- cons:
+  -

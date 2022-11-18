@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: sota review
+# key: sota
+# --
+- $1
+ - 开源地址：$2
+ - 可部署性：
+ - 计算速度：
+ - 精度指标：$0
