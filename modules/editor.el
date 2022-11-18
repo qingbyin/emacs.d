@@ -21,9 +21,6 @@
 (use-package flyspell-correct-popup
   :bind (:map flyspell-mode-map ("C-SPC" . flyspell-correct-wrapper)))
 
-;; Auto completion
-
-
 ;; indent guide (i.e. vertical bar)
 (use-package highlight-indent-guides
   :custom ; Must use :custom instead of :config

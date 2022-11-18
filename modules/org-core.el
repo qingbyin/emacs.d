@@ -23,9 +23,9 @@
   (setq org-cycle-separator-lines -1)
 
   ; Auto add org-id to make a link to the current entry
-  (setq org-id-link-to-org-use-id t)
+  ;; (setq org-id-link-to-org-use-id t)
   ; Auto create id for each capture
-  (add-hook 'org-capture-mode-hook #'org-id-get-create)
+  ;; (add-hook 'org-capture-mode-hook #'org-id-get-create)
   ; Use #+ATTR_ORG to resize image instead of its actual size
   (setq org-image-actual-width nil)
   ; Always show images in the org file
@@ -93,7 +93,9 @@
 ; Set other keywords color face
 (setq org-todo-keyword-faces
       (quote (("NEXT" :foreground "#b54845" :weight bold)
-              ("WAIT" :foreground "#f9750a" :weight bold))))
+              ("WAIT" :foreground "#f9750a" :weight bold)
+              ("QUIZ" :foreground "#b54845" :weight bold)
+              )))
   )
 
 
@@ -231,5 +233,8 @@
         ("=" (:background "maroon" :foreground "white"))
         ("~" (:background "#343941"))
         ("+" (:strike-through t))))
+
+; Math
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
 (provide 'org-core)
