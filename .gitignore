@@ -12,6 +12,7 @@ recentf
 /url/cache/
 /request/
 /transient/
+/var/
 bookmarks
 *.db
 *.org-id-locations

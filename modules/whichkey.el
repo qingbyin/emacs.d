@@ -9,7 +9,13 @@
         ("<leader>hk" . describe-key)
         ("<leader>of" . org-roam-node-find)
         ("<leader>op" . org-download-clipboard)
+        ("<leader>e" . dired)
         ("<leader>d" . delete-current-buffer-file)
+        ("<leader>f" . helm-do-ag-this-file)
+        ("<leader>F" . consult-ripgrep)
+        ("<leader>x" . execute-extended-command)
+        ("C-p" . find-file)
+        ("C-S-p" . switch-to-buffer)
         )
   :hook
   (after-init . which-key-mode))

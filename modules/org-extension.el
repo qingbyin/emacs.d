@@ -3,11 +3,13 @@
 (use-package org-roam
   :config
   (setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
-  (org-roam-db-autosync-mode t)
   :bind
-  (:map evil-normal-state-map ("<leader>oa" . org-roam-alias-add)))
+  (:map evil-normal-state-map ("<leader>oa" . org-roam-alias-add))
+  (:map org-roam-mode-map ("h" . nil)) ; Fix h key conflicted with evil mode
+  )
+(org-roam-db-autosync-mode)
 ; Complete roam node even if not within a bracketed link(i.e. [[]])
-(setq org-roam-completion-system 'helm)
+;; (setq org-roam-completion-system 'helm)
 (setq org-roam-completion-everywhere t)
 
 ; (add-to-list 'display-buffer-alist

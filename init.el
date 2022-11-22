@@ -78,7 +78,6 @@
 (require 'startup)
 (require 'theme)
 (require 'vim)
-(require 'search)
 (require 'git)
 (require 'editor)
 (require 'completion)
