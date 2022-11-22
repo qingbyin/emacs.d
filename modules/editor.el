@@ -4,9 +4,9 @@
   :hook (prog-mode . electric-pair-mode))
 
 ;; Clean up whitespace on save
-(use-package whitespace
-  :ensure nil
-  :hook (before-save . whitespace-cleanup))
+;; (use-package whitespace
+;;   :ensure nil
+;;   :hook (before-save . whitespace-cleanup))
 
 ;; Check word spell
 (use-package flyspell
@@ -31,5 +31,20 @@
   (highlight-indent-guides-auto-character-face-perc 70)
   :hook ((prog-mode . highlight-indent-guides-mode)
          (text-mode . highlight-indent-guides-mode)))
+
+;; delete the current file
+(defun delete-current-buffer-file ()
+  "Removes file connected to current buffer and kills buffer."
+  (interactive)
+  (let ((filename (buffer-file-name))
+        (buffer (current-buffer))
+        (name (buffer-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (ido-kill-buffer)
+      (when (yes-or-no-p "Are you sure you want to remove this file? ")
+        (delete-file filename)
+        (kill-buffer buffer)
+        (message "File '%s' successfully removed" filename)))))
+
 
 (provide 'editor)
