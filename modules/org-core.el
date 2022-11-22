@@ -18,6 +18,8 @@
   (setq org-startup-indented t)
   ; Collpase all when opening org files
   (setq org-startup-folded t)
+  ; Disable blank line when typing new heading/list
+  (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 
   ; Do not fold empty lines at the end of a heading
   (setq org-cycle-separator-lines -1)
@@ -50,9 +52,9 @@
   ;
   (evil-define-key 'normal org-mode-map (kbd "t") 'org-insert-todo-heading)
   (evil-define-key 'normal org-mode-map (kbd "gd") 'org-open-at-point)
-  (evil-define-key 'normal org-mode-map (kbd "<leader>d") 'org-deadline)
-  (evil-define-key 'normal org-mode-map (kbd "<leader>s") 'org-schedule)
-  (evil-define-key 'normal org-mode-map (kbd "E") 'org-set-effort)
+  (evil-define-key 'normal org-mode-map (kbd "<leader>od") 'org-deadline)
+  (evil-define-key 'normal org-mode-map (kbd "<leader>os") 'org-schedule)
+  (evil-define-key 'normal org-mode-map (kbd "<leader>oe") 'org-set-effort)
   ; Change heading level
   (evil-define-key 'normal org-mode-map (kbd "<") 'org-metaleft)
   (evil-define-key 'normal org-mode-map (kbd ">") 'org-metaright)
