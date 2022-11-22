@@ -8,6 +8,7 @@
         ("<leader>hb" . describe-bindings)
         ("<leader>hk" . describe-key)
         ("<leader>of" . org-roam-node-find)
+        ("<leader>op" . org-download-clipboard)
         ("<leader>d" . delete-current-buffer-file)
         )
   :hook

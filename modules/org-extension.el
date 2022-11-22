@@ -162,9 +162,7 @@
   (setq org-download-image-dir (concat my-org-dir "/assets/")
         org-download-heading-lvl nil
         org-download-timestamp "%Y%m%d-%H%M%S_"
-        org-download-image-org-width 300)
-  :bind (:map evil-insert-state-map ("C-]" . org-download-clipboard))
-  )
+        org-download-image-org-width 300))
 
 
 ;; -----------------------------------------------------------------------------
