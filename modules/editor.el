@@ -30,7 +30,8 @@
   ; Increase the bar color (since it's barely visible in dark theme)
   (highlight-indent-guides-auto-character-face-perc 70)
   :hook ((prog-mode . highlight-indent-guides-mode)
-         (text-mode . highlight-indent-guides-mode)))
+         ; (text-mode . highlight-indent-guides-mode)
+         ))
 
 ;; delete the current file
 (defun delete-current-buffer-file ()
