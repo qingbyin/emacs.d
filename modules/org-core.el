@@ -20,7 +20,6 @@
   (setq org-startup-folded t)
   ; Disable blank line when typing new heading/list
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
-
   ; Do not fold empty lines at the end of a heading
   (setq org-cycle-separator-lines -1)
 
@@ -213,7 +212,7 @@
     "Call a shell script to commit all org files."
     (org-save-all-org-buffers)
     (let ((default-directory "~/nutstore/cloud/todo"))
-      (shell-command "git add -all .")
+      (shell-command "git add --all")
       (shell-command "git commit -a -m 'Auto update'"))
     )
 
