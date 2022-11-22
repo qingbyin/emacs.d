@@ -3,7 +3,7 @@
 (use-package org-roam
   :config
   (setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
-  (org-roam-db-autosync-mode)
+  (org-roam-db-autosync-mode t)
   :bind
   (:map evil-normal-state-map ("<leader>oa" . org-roam-alias-add)))
 ; Complete roam node even if not within a bracketed link(i.e. [[]])
@@ -145,13 +145,13 @@
 ; Auto show/hide emphasis markers, links
 (use-package org-appear
   :hook (org-mode . org-appear-mode)
+  :custom
   ;; :custom
   ;; (org-appear-autoentities t)
   ;; (org-pretty-entities t)
-; (setq org-appear-autolinks t)
 ; (setq org-link-descriptive t)
-  :config
   (org-hide-emphasis-markers t)
+  (org-appear-autolinks 'just-brackets)
   )
 
 ;; -----------------------------------------------------------------------------
