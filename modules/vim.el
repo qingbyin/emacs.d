@@ -15,7 +15,7 @@
   :custom
   (evil-want-minibuffer t) ; enable evil mode in the input buffer at the bottom
   :config
-  (evil-set-leader 'normal (kbd "SPC"))
+  (evil-set-leader '(normal visual) (kbd "SPC"))
   (evil-define-key '(normal motion) 'global (kbd "C-j") 'evil-window-down)
   (evil-define-key '(normal motion) 'global (kbd "C-k") 'evil-window-up)
   (evil-define-key '(normal motion) 'global (kbd "C-h") 'evil-window-left)
