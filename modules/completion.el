@@ -35,8 +35,8 @@
 (use-package helm
   :diminish helm-mode
   :hook (after-init . helm-mode)
-  :custom
-  (helm-split-window-inside-p t)
+  ;; :custom
+  ;; (helm-split-window-inside-p t)
   :bind (:map evil-normal-state-map
               ;; ("C-p" . helm-find-files)
               ;; ("C-S-p" . helm-buffers-list)
@@ -55,5 +55,9 @@
   (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
   :bind (:map evil-normal-state-map
               ("<leader>f" . helm-do-ag-this-file)))
+
+; Solve 乱弹buffer的问题
+(use-package popwin)
+(popwin-mode 1)
 
 (provide 'completion)
