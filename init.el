@@ -19,6 +19,10 @@
 ; Open files at last-edited position
 (save-place-mode 1)
 
+;; Auto refresh the buffer when the file changes
+;; (fix some hassles e.g. org-capture will not auto refresh the inbox.org)
+(global-auto-revert-mode 1)
+
 ; Show whitespaces (not need for the org mode)
 ; (global-whitespace-mode 1)
 ; (setq whitespace-style (quote (space-mark tab-mark)))
