@@ -1,8 +1,11 @@
 (use-package yasnippet
   :config
   (yas-snippet-dirs '("~/.emacs.d/snippets"))
-  :hook (after-init . yas-global-mode)
-  )
+  :bind
+  (:map yas-keymap
+        ("C-j" . yas-next-field)
+        ("C-k" . yas-prev-field))
+  :hook (after-init . yas-global-mode))
 
 (use-package company
   ; Use tab to complete selection
@@ -56,8 +59,5 @@
   :bind (:map evil-normal-state-map
               ("<leader>f" . helm-do-ag-this-file)))
 
-; Solve 乱弹buffer的问题
-(use-package popwin)
-(popwin-mode 1)
 
 (provide 'completion)

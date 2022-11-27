@@ -48,4 +48,11 @@
         (message "File '%s' successfully removed" filename)))))
 
 
+;; Window manager
+; move to the previous/next window
+(winner-mode 1)
+; Solve 乱弹buffer的问题
+(use-package popwin)
+(popwin-mode 1)
+
 (provide 'editor)
