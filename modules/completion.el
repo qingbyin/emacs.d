@@ -20,7 +20,9 @@
         company-tooltip-align-annotations t
         company-backends '((company-yasnippet company-capf company-dabbrev company-ispell :separate) company-files)
         company-frontends '(company-pseudo-tooltip-frontend ; show tooltip even for single candidate
-                             company-echo-metadata-frontend))
+                            company-echo-metadata-frontend)
+        company-dabbrev-downcase nil ; No case transformation
+        )
   ; Always enable company
   :hook (after-init . global-company-mode))
 
