@@ -2,6 +2,10 @@
 ; org-roam
 (use-package org-roam
   :config
+  (setq org-roam-mode-sections
+   '((org-roam-backlinks-section :unique t)
+     org-roam-reflinks-section
+     org-roam-unlinked-references-section))
   (setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
   :bind
   (:map evil-normal-state-map ("<leader>oa" . org-roam-alias-add))
