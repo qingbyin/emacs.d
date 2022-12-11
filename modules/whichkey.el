@@ -20,8 +20,8 @@
         ("C-S-p" . switch-to-buffer)
         ("M-k" . evil-window-increase-height)
         ("M-j" . evil-window-decrease-height)
-        ("M-l" . evil-window-increase-weight)
-        ("M-h" . evil-window-decrease-weight)
+        ("M-l" . evil-window-increase-width)
+        ("M-h" . evil-window-decrease-width)
         )
   :hook
   (after-init . which-key-mode))
