@@ -202,4 +202,9 @@
   )
 (add-hook 'org-mode-hook 'org-fragtog-mode)
 
+;; -----------------------------------------------------------------------------
+;; Creates an interactive visualization of org-mode time-tracking data
+(use-package org-analyzer)
+
+
 (provide 'org-extension)
