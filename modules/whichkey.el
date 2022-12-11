@@ -18,6 +18,10 @@
         ("<leader>wl" . winner-redo)
         ("C-p" . find-file)
         ("C-S-p" . switch-to-buffer)
+        ("M-k" . evil-window-increase-height)
+        ("M-j" . evil-window-decrease-height)
+        ("M-l" . evil-window-increase-weight)
+        ("M-h" . evil-window-decrease-weight)
         )
   :hook
   (after-init . which-key-mode))
