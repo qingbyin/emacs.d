@@ -49,5 +49,11 @@
   :config
   (global-evil-surround-mode 1))
 
+;; Complement evil keymaps for other buffers (include magit, helm)
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 ;; END
 (provide 'vim)

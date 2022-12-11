@@ -16,6 +16,7 @@
         ("<leader>x" . execute-extended-command)
         ("<leader>wh" . winner-undo)
         ("<leader>wl" . winner-redo)
+        ("<leader>gg" . magit)
         ("C-p" . find-file)
         ("C-S-p" . switch-to-buffer)
         ("M-k" . evil-window-increase-height)
@@ -27,6 +28,7 @@
   (after-init . which-key-mode))
 
 ; Key bindings
+
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "<f12>") (lambda() (interactive)(find-file user-emacs-directory)))
 
