@@ -34,6 +34,7 @@
 
   ; Open agenda
   (evil-define-key 'normal org-mode-map (kbd "<leader>a") (lambda () (interactive) (org-agenda nil "x")))
+  (evil-define-key 'normal org-mode-map (kbd "<leader>A") (lambda () (interactive) (org-agenda nil "t")))
   (evil-define-key 'motion org-agenda-mode-map (kbd "a") (lambda () (interactive) (org-agenda nil "x")))
   ; Change todo states
   (evil-define-key 'normal org-mode-map (kbd "T") (lambda () (interactive) (org-todo "TODO")))
