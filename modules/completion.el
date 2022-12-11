@@ -40,8 +40,8 @@
 (use-package helm
   :diminish helm-mode
   :hook (after-init . helm-mode)
-  ;; :custom
-  ;; (helm-split-window-inside-p t)
+  :custom
+  (helm-split-window-inside-p t)
   :bind (:map evil-normal-state-map
               ;; ("C-p" . helm-find-files)
               ;; ("C-S-p" . helm-buffers-list)
