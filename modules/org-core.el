@@ -98,7 +98,8 @@
               ("WAIT" :foreground "#f9750a" :weight bold)
               ("QUIZ" :foreground "#b54845" :weight bold)
               )))
-  )
+(diminish 'org-indent-mode)
+)
 
 
 ;; -----------------------------------------------------------------------------
@@ -106,14 +107,14 @@
 ;; -----------------------------------------------------------------------------
 (setq org-capture-templates
       '(
-        ("t" "Todo" entry (file "~/nutstore/cloud/todo/inbox.org")
+        ("t" "Todo" entry (file (expand-file-name "inbox.org" my-org-dir))
          "* TODO %^{Description}\nCreated: %u\n%?\n")
-        ("j" "Journal" entry (file "~/nutstore/cloud/todo/journal.org")
+        ("j" "Journal" entry (file (expand-file-name "journal.org.gpg" my-org-dir))
          "* %u\n%?\n")
         ; For web caputre
-        ("p" "Protocol" entry (file "~/nutstore/cloud/todo/inbox.org")
+        ("p" "Protocol" entry (file (expand-file-name "inbox.org" my-org-dir))
         "* TODO%^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-        ("L" "Protocol Link" entry (file "~/nutstore/cloud/todo/inbox.org")
+        ("L" "Protocol Link" entry (file (expand-file-name "inbox.org" my-org-dir))
         "* TODO %? [[%:link][%:description]] \nCaptured On: %U")
         ))
 
@@ -212,7 +213,7 @@
 (defun org-commit ()
     "Call a shell script to commit all org files."
     (org-save-all-org-buffers)
-    (let ((default-directory "~/nutstore/cloud/todo"))
+    (let ((default-directory my-org-dir))
       (shell-command "git add --all")
       (shell-command "git commit -a -m 'Auto update'"))
     )
@@ -238,5 +239,9 @@
 
 ; Math
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
+; Encrypt
+(require 'epa-file)
+(epa-file-enable)
 
 (provide 'org-core)
