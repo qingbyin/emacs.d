@@ -21,7 +21,8 @@
 
 ;; Auto refresh the buffer when the file changes
 ;; (fix some hassles e.g. org-capture will not auto refresh the inbox.org)
-(global-auto-revert-mode 1)
+; (global-auto-revert-mode 1)
+; (setq auto-revert-use-notify nil)
 
 ; Show whitespaces (not need for the org mode)
 ; (global-whitespace-mode 1)
@@ -76,8 +77,6 @@
 ;; -----------------------------------------------------------------------------
 ;; Load module path to know all files in it.
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
-;; Use :diminish to hide unimportannt minor modes in the modeline
-(use-package diminish :demand t)
 ;; Packages
 (require 'startup)
 (require 'theme)
@@ -89,4 +88,5 @@
 (require 'org-core)
 (require 'org-extension)
 (require 'markdown)
+;; (require 'feed)
 (require 'whichkey)
