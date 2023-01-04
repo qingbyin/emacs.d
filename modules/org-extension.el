@@ -175,6 +175,7 @@
 ;; Anki with org
 (use-package anki-editor
   :hook (org-mode . anki-editor-mode)
+  :diminish anki-editor-mode
   :config
   ; Do not count org tags as ANki tags
   (setq anki-editor-org-tags-as-anki-tags nil)

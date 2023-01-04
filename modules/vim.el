@@ -51,6 +51,7 @@
 
 ;; Complement evil keymaps for other buffers (include magit, helm)
 (use-package evil-collection
+  :diminish evil-collection-unimpaired-mode
   :after evil
   :config
   (evil-collection-init))

@@ -23,6 +23,7 @@
 
 ;; indent guide (i.e. vertical bar)
 (use-package highlight-indent-guides
+  :diminish highlight-indent-guides-mode
   :custom ; Must use :custom instead of :config
   (highlight-indent-guides-method 'character)
   ;; (highlight-indent-guides-responsive 'top) ; dynamic highlight bar

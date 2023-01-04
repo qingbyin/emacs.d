@@ -5,9 +5,13 @@
   (:map yas-keymap
         ("C-j" . yas-next-field)
         ("C-k" . yas-prev-field))
-  :hook (after-init . yas-global-mode))
+  ;; :hook (after-init . yas-global-mode)
+  :init (yas-global-mode 1)
+  :diminish (yas-minor-mode . "Y")
+  )
 
 (use-package company
+  :diminish company-mode
   ; Use tab to complete selection
   :bind (:map company-active-map
               ("<tab>" . company-complete-selection)

@@ -1,4 +1,5 @@
 (use-package which-key
+  :diminish which-key-mode
   :bind
   (:map evil-normal-state-map
         ;; TODO USE this after updating use-package
