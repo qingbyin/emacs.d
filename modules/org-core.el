@@ -1,11 +1,11 @@
 ;; Org path
-(defvar my-org-dir "~/nutstore/cloud/todo")
+(setq org-directory "~/nutstore/cloud/todo/")
 
 (use-package org
   :bind (:map evil-normal-state-map ("<leader>oi" . org-id-get-create))
   :config
   ;; Set files for global org-todo list
-  (setq org-agenda-files (list my-org-dir))
+  (setq org-agenda-files (list org-directory))
   ; Use evil mode in agenda view by default
   (evil-set-initial-state 'org-agenda-mode 'motion)
   ; Add a close date for a completed task
@@ -212,7 +212,7 @@
 (defun org-commit ()
     "Call a shell script to commit all org files."
     (org-save-all-org-buffers)
-    (let ((default-directory my-org-dir))
+    (let ((default-directory org-directory))
       (shell-command "git add --all")
       (shell-command "git commit -a -m 'Auto update'"))
     )

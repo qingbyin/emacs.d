@@ -6,7 +6,7 @@
    '((org-roam-backlinks-section :unique t)
      org-roam-reflinks-section
      org-roam-unlinked-references-section))
-  (setq org-roam-directory (file-truename "~/nutstore/cloud/todo"))
+  (setq org-roam-directory (file-truename org-directory))
   :bind
   (:map evil-normal-state-map ("<leader>oa" . org-roam-alias-add))
   (:map org-roam-mode-map ("h" . nil)) ; Fix h key conflicted with evil mode
