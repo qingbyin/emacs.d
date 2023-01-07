@@ -107,14 +107,13 @@
 ;; -----------------------------------------------------------------------------
 (setq org-capture-templates
       '(
-        ("t" "Todo" entry (file (expand-file-name "inbox.org" my-org-dir))
+        ("t" "Todo" entry (file "inbox.org")
          "* TODO %^{Description}\nCreated: %u\n%?\n")
-        ("j" "Journal" entry (file (expand-file-name "journal.org.gpg" my-org-dir))
-         "* %u\n%?\n")
+        ; ("j" "Journal" entry (file "journal.org.gpg") "* %u\n%?\n")
         ; For web caputre
-        ("p" "Protocol" entry (file (expand-file-name "inbox.org" my-org-dir))
+        ("p" "Protocol" entry (file "inbox.org")
         "* TODO%^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-        ("L" "Protocol Link" entry (file (expand-file-name "inbox.org" my-org-dir))
+        ("L" "Protocol Link" entry (file "inbox.org")
         "* TODO %? [[%:link][%:description]] \nCaptured On: %U")
         ))
 
