@@ -1,0 +1,16 @@
+patch:
+  schema_list:
+    - schema: double_pinyin_flypy
+    - schema: luna_pinyin
+  menu/page_size: 9 # 每页显示候选字词数量
+  "switcher/hotkeys":  # 输入法切换快捷键
+    - "Control+grave"  # 即 Ctrl+`
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key:
+      Caps_Lock: clear
+      Control_L: inline_ascii
+      Control_R: noop
+      Eisu_toggle: clear
+      Shift_L: noop
+      Shift_R: commit_text

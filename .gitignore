@@ -20,3 +20,8 @@ tramp
 # Dump custom.el
 to-be-dumped.el
 places
+
+rime/build/
+rime/installation.yaml
+rime/luna_pinyin.userdb
+rime/user.yaml

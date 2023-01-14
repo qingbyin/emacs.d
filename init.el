@@ -90,3 +90,20 @@
 (require 'markdown)
 ;; (require 'feed)
 (require 'whichkey)
+(use-package rime
+  :custom
+  (default-input-method "rime")
+  (rime-show-candidate 'posframe)
+  (rime-disable-predicates
+    '(rime-predicate-evil-mode-p
+       rime-predicate-after-alphabet-char-p
+       rime-predicate-space-after-cc-p
+       rime-predicate-tex-math-or-command-p
+       rime-predicate-prog-in-code-p))
+  ;; 可提示临时英文状态的提示符
+  (mode-line-mule-info '((:eval (rime-lighter))))
+  :bind
+  (:map rime-mode-map
+        ("C-`" . 'rime-send-keybinding))
+  )
+
