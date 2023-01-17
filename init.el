@@ -19,6 +19,9 @@
 ; Open files at last-edited position
 (save-place-mode 1)
 
+;; Make ESC quit prompts instead of C-g/ double ESC
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
 ;; Auto refresh the buffer when the file changes
 ;; (fix some hassles e.g. org-capture will not auto refresh the inbox.org)
 ; (global-auto-revert-mode 1)
@@ -77,6 +80,8 @@
 ;; -----------------------------------------------------------------------------
 ;; Load module path to know all files in it.
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+;; debug tools
+(use-package command-log-mode)
 ;; Packages
 (require 'startup)
 (require 'theme)
