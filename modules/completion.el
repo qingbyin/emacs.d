@@ -7,7 +7,6 @@
         ("C-k" . yas-prev-field))
   ;; :hook (after-init . yas-global-mode)
   :init (yas-global-mode 1)
-  :diminish (yas-minor-mode . "Y")
   )
 
 (use-package company
@@ -30,40 +29,67 @@
   ; Always enable company
   :hook (after-init . global-company-mode))
 
-;;
-(use-package selectrum)
-(selectrum-mode +1)
-; Enhance filter and sorting (e.g. fuzzy search and show frequency words first)
-(use-package selectrum-prescient)
-(selectrum-prescient-mode +1)
-(prescient-persist-mode +1)
-;; For grep search
-(use-package consult)
+;; Completion read and search
+(use-package consult
+  :bind (
+         :map evil-normal-state-map
+        ("<leader>f" . consult-line) ; Search the current file
+        ("<leader>F" . consult-ripgrep) ; Search all files in a project
+        ("M-p" . switch-to-buffer) ; Switch opening buffers
+        ;; ("M-p" . consult-buffer) ; switch-to-buffer with preview
+        ;; Switch in the outline menu with preview
+        ("go" . consult-imenu)))
 
-;; Helm  = vim coc-lists for interactive searching
-(use-package helm
-  :diminish helm-mode
-  :hook (after-init . helm-mode)
-  :custom
-  (helm-split-window-inside-p t)
-  :bind (:map evil-normal-state-map
-              ;; ("C-p" . helm-find-files)
-              ;; ("C-S-p" . helm-buffers-list)
-              ("<leader>hh" . helm-apropos)
-              ;; ("<leader>x" . helm-M-x)
-              ;; ("<leader>F" . helm-do-grep-ag)
-              :map helm-map
-              ("C-w" . evil-delete-backward-word)
-              ("C-e" . move-end-of-line)
-              ("C-j" . helm-next-line)
-              ("C-k" . helm-previous-line)))
+;; Interactive completion
+;; Enable vertico
+(use-package vertico
+  :init
+  (vertico-mode)
+  :bind (
+         :map vertico-map
+         ("C-j" . vertico-next)
+         ("C-k" . vertico-previous)))
 
-(use-package helm-ag
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
+;; A few more useful configurations...
+(use-package emacs
+  :init
+  ;; Add prompt indicator to `completing-read-multiple'.
+  ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
+  (defun crm-indicator (args)
+    (cons (format "[CRM%s] %s"
+                  (replace-regexp-in-string
+                   "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                   crm-separator)
+                  (car args))
+          (cdr args)))
+  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+  ;; Do not allow the cursor in the minibuffer prompt
+  (setq minibuffer-prompt-properties
+        '(read-only t cursor-intangible t face minibuffer-prompt))
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  ;; Enable recursive minibuffers
+  (setq enable-recursive-minibuffers t))
+
+;; Optionally use the `orderless' completion style.
+(use-package orderless
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
+
+;; adds marginalia to the minibuffer completions
+(use-package marginalia
+  :after vertico
+  :ensure t
   :config
-  (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
-  (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
-  :bind (:map evil-normal-state-map
-              ("<leader>f" . helm-do-ag-this-file)))
-
+  (marginalia-mode))
 
 (provide 'completion)
