@@ -14,8 +14,10 @@
   (setq org-log-into-drawer "LOGBOOK")
   ; Cannot set a headline to DONE if children aren’t DONE
   (setq-default org-enforce-todo-dependencies t)
-  ; org-indent mode, i.e. add a virtual indentaion based on the headline level.
-  (setq org-startup-indented t)
+  ; org-indent mode, i.e. add a virtual indentation based on the headline level.
+  ;; (setq org-startup-indented t)
+  ;; auto indent
+  ;; (setq org-adapt-indentation t)
   ; Collpase all when opening org files
   (setq org-startup-folded t)
   ; Disable blank line when typing new heading/list
@@ -69,13 +71,19 @@
   (evil-define-key 'normal org-mode-map (kbd "qa") 'org-cycle)
   (evil-define-key 'normal org-mode-map (kbd "q;") 'org-cycle)
 
+  ; Switch window
+  (evil-define-key '(normal motion) org-mode-map (kbd "C-j") 'evil-window-down)
+  (evil-define-key '(normal motion) org-mode-map (kbd "C-k") 'evil-window-up)
+  (evil-define-key '(normal motion) org-mode-map (kbd "C-h") 'evil-window-left)
+  (evil-define-key '(normal motion) org-mode-map (kbd "C-l") 'evil-window-right)
+
   ; Display image
   ; refresh image settings after modifying #+ATTR_ORG
   (evil-define-key 'normal org-mode-map (kbd "<leader>v") 'org-redisplay-inline-images)
   ; Enable/disalbe image display
   (evil-define-key 'normal org-mode-map (kbd "<leader>V") 'org-toggle-inline-images)
 ;; -----------------------------------------------------------------------------
-;; Config styles
+;; config styles
 ;; -----------------------------------------------------------------------------
 ; All headings use the same color
 (set-face-attribute 'org-level-1 nil :inherit 'normal)

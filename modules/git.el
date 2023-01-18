@@ -9,6 +9,7 @@
               ("gs" . git-gutter:stage-hunk))
   :custom
   (git-gutter:update-interval 0.1) ; Live updating git status
+  (git-gutter:ask-p nil) ; Do not ask yes/no when staging hunks
   )
 
 (use-package magit

@@ -5,15 +5,16 @@
   (setq evil-disable-insert-state-bindings t) ; Disable default insert bindings
   (setq evil-undo-system  'undo-redo) ; Must be set before loading evil
   :hook (after-init . evil-mode) ; Enable evil mode while startup
-  :bind (:map evil-normal-state-map
-              ;; Treat soft wrapped line (i.e. break into multiple lines) scrolling as a single line.
-              ("j" . evil-next-visual-line)
-              ("k" . evil-previous-visual-line)
-              ("<leader>q" . kill-current-buffer)
-              :map evil-insert-state-map
-              ("C-v" . evil-paste-after))
-  :custom
-  (evil-want-minibuffer t) ; enable evil mode in the input buffer at the bottom
+  :bind (
+         :map evil-normal-state-map
+         ;; Treat soft wrapped line (i.e. break into multiple lines) scrolling as a single line.
+         ("j" . evil-next-visual-line)
+         ("k" . evil-previous-visual-line)
+         ("<leader>q" . kill-current-buffer)
+         :map evil-insert-state-map
+         ("C-v" . evil-paste-after))
+  ;; :custom
+  ;; (evil-want-minibuffer t) ; enable evil mode in the input buffer at the bottom
   :config
   (evil-set-leader '(normal visual) (kbd "SPC"))
   (evil-define-key '(normal motion) 'global (kbd "C-j") 'evil-window-down)
@@ -30,6 +31,11 @@
   (evil-define-key 'normal 'global (kbd "qO") 'evil-open-fold-rec)
   (evil-define-key 'normal 'global (kbd "qc") 'evil-close-fold)
   (evil-define-key 'normal 'global (kbd "qC") 'evil-close-fold-rec)
+  ; Resize window
+  (evil-define-key '(normal motion) 'global (kbd "M-k") 'evil-window-increase-height)
+  (evil-define-key '(normal motion) 'global (kbd "M-j") 'evil-window-decrease-height)
+  (evil-define-key '(normal motion) 'global (kbd "M-k") 'evil-window-increase-width)
+  (evil-define-key '(normal motion) 'global (kbd "M-k") 'evil-window-decrease-width)
   )
 
 ;; Provide gcc to comment out a line

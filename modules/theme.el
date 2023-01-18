@@ -2,8 +2,18 @@
 ;; Extra line spacing
 (setq line-spacing 0.1)
 
+(scroll-bar-mode -1)        ; Disable visible scrollbar
+(tool-bar-mode -1)          ; Disable the toolbar
+(tooltip-mode -1)           ; Disable tooltips
+(set-fringe-mode 10)        ; Give some breathing room
+
 ;; View the most popular theme in https://emacsthemes.com/popular/index.html
-(use-package atom-one-dark-theme :config (load-theme 'atom-one-dark t))
+;; (use-package atom-one-dark-theme :config (load-theme 'atom-one-dark t))
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-one t))
 
 ;; Mode line theme (nerd font rquired)
 ; (use-package powerline :init (powerline-default-theme))

@@ -31,9 +31,11 @@
                             "#+title: ${title}\n#+date: %u\n- tags::")
          :unnarrowed t)))
 
-(define-key input-decode-map "\C-i" [C-i]) ; Distinguish C-i from TAB
-(global-set-key (kbd "<C-i>") 'org-roam-node-insert)
-(global-set-key (kbd "<C-f>") 'org-roam-node-find)
+; (evil-define-key 'insert org-mode-map (kbd "<M-i>") 'org-roam-node-insert)
+; (define-key org-mode-map (kbd "<c-i>") 'org-roam-node-insert)
+(with-eval-after-load "org"
+  (define-key org-mode-map (kbd "<M-i>") #'org-roam-node-insert))
+(evil-define-key '(normal insert) org-mode-map (kbd "<M-f>") 'org-roam-node-find)
 
 ; org-roam UI
 (use-package org-roam-ui

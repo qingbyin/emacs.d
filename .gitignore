@@ -2,6 +2,8 @@ auto-save-list/
 elpa/
 site-lisp/package/
 .git/
+eshell/
+eln-cache/
 
 custom.el
 *~
@@ -20,6 +22,7 @@ tramp
 # Dump custom.el
 to-be-dumped.el
 places
+history
 
 rime/build/
 rime/installation.yaml

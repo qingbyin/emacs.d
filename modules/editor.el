@@ -29,7 +29,7 @@
   ;; (highlight-indent-guides-responsive 'top) ; dynamic highlight bar
   (highlight-indent-guides-auto-enabled t) ; auto line color
   ; Increase the bar color (since it's barely visible in dark theme)
-  (highlight-indent-guides-auto-character-face-perc 70)
+  ;; (highlight-indent-guides-auto-character-face-perc 70)
   :hook ((prog-mode . highlight-indent-guides-mode)
          ; (text-mode . highlight-indent-guides-mode)
          ))
