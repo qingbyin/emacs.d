@@ -9,6 +9,9 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
+; Turn off auto line soft wrap
+(setq-default truncate-lines t)
+
 ; Show relative line numbers
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'visual) ; Fix relative line numbers after collapse
@@ -111,4 +114,3 @@
   (:map rime-mode-map
         ("C-`" . 'rime-send-keybinding))
   )
-
