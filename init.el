@@ -77,6 +77,7 @@
 ; Specify `:ensure t` in all packages we want to install
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+(use-package diminish)
 
 ;; -----------------------------------------------------------------------------
 ;; Load modules
